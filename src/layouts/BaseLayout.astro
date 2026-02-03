@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Future AU Podcast - Imagining Australia's Tomorrow, Today." } = Astro.props;
+const { title, description = "Future AU Podcast - Building the Lucky Country 2.0" } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,55 +16,211 @@ const { title, description = "Future AU Podcast - Imagining Australia's Tomorrow
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-    <title>{title} | Future AU Podcast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title} | Future AU</title>
   </head>
-  <body class="bg-teal-900 text-white min-h-screen flex flex-col font-sans antialiased">
-    <header class="border-b border-teal-800">
-      <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center">
-          <img src="/images/logo.png" alt="Future AU Podcast" class="h-10" />
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <a href="/" class="nav-logo">
+          FUTURE<span class="nav-logo-badge">AU</span>
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <ul class="flex items-center gap-6 text-sm">
-            <li><a href="#episodes" class="text-cream-200 hover:text-white transition-colors">Episodes</a></li>
-            <li><a href="#host" class="text-cream-200 hover:text-white transition-colors">Host</a></li>
-            <li><a href="#faq" class="text-cream-200 hover:text-white transition-colors">FAQ</a></li>
-            <li><a href="#contact" class="text-cream-200 hover:text-white transition-colors">Contact</a></li>
-          </ul>
-          <a
-            href="#signup"
-            class="bg-gold-500 text-teal-900 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gold-400 transition-colors"
-          >
-            Sign up to Mailing List
-          </a>
+        <div class="nav-links">
+          <a href="#topics" class="nav-link">TOPICS</a>
+          <a href="#host" class="nav-link">HOST</a>
+          <a href="#contact" class="nav-link">CONTACT</a>
+          <a href="#signup" class="nav-cta">NOTIFY ME</a>
         </div>
-        <button class="md:hidden text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <button class="nav-mobile-toggle" aria-label="Toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </nav>
     </header>
 
-    <main class="flex-1">
+    <main>
       <slot />
     </main>
 
-    <footer class="bg-teal-950 border-t border-teal-800 py-12">
-      <div class="max-w-6xl mx-auto px-6 text-center">
-        <div class="flex justify-center mb-4">
-          <img src="/images/logo.png" alt="Future AU Podcast" class="h-8" />
-        </div>
-        <p class="text-cream-300 text-sm mb-6">Episode archives: Coming Soon</p>
-        <p class="text-teal-700 text-xs">&copy; {new Date().getFullYear()} Future AU Podcast. All rights reserved.</p>
+    <footer class="footer">
+      <div class="footer-content">
+        <a href="/" class="footer-logo">
+          FUTURE<span class="footer-logo-badge">AU</span>
+        </a>
+        <p class="footer-copyright">
+          &copy; {new Date().getFullYear()} FUTURE AU. ALL RIGHTS RESERVED.
+        </p>
       </div>
     </footer>
+
+    <style is:global>
+      /* ===== RESET & BASE ===== */
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        background-color: #0a3a3a;
+        color: #ffffff;
+        min-height: 100vh;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      /* ===== HEADER ===== */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background-color: #0a3a3a;
+        border-bottom: 1px solid #156b6b;
+      }
+
+      .nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 28px;
+        letter-spacing: 0.05em;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-logo-badge {
+        background-color: #f5c518;
+        color: #0a3a3a;
+        padding: 2px 8px;
+        margin-left: 4px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .nav-link {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        color: #ffffff;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #f5c518;
+      }
+
+      .nav-cta {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        background-color: #f5c518;
+        color: #0a3a3a;
+        padding: 12px 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      .nav-cta:hover {
+        background-color: #f7d04c;
+      }
+
+      .nav-mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .nav-mobile-toggle {
+          display: block;
+        }
+      }
+
+      /* ===== FOOTER ===== */
+      .footer {
+        background-color: #0a3a3a;
+        border-top: 1px solid #156b6b;
+        padding: 32px 0;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .footer-logo {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 24px;
+        letter-spacing: 0.05em;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-logo-badge {
+        background-color: #f5c518;
+        color: #0a3a3a;
+        padding: 2px 8px;
+        margin-left: 4px;
+      }
+
+      .footer-copyright {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        color: #7ab5b5;
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          flex-direction: column;
+          gap: 16px;
+          text-align: center;
+        }
+      }
+    </style>
   </body>
 </html>
-
-<style is:global>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>

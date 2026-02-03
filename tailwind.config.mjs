@@ -10,13 +10,17 @@ export default {
           800: '#105a5a',
           700: '#156b6b',
           600: '#1a7c7c',
+          500: '#1f8d8d',
+          light: '#7ab5b5',
         },
         gold: {
+          DEFAULT: '#f5c518',
           500: '#f5c518',
           400: '#f7d04c',
           300: '#f9db80',
         },
         cream: {
+          DEFAULT: '#f5f3e8',
           50: '#f5f3e8',
           100: '#edecd7',
           200: '#e8e0c8',
@@ -24,8 +28,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        display: ['Bebas Neue', 'system-ui', 'sans-serif'],
       },
     },
   },

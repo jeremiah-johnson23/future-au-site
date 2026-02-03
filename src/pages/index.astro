@@ -3,27 +3,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const topics = [
   {
-    question: "How will self driving cars change Jobs, Transport, and Cities in Australia?",
+    number: "01",
+    question: "How will self-driving cars change Jobs, Transport, and Cities?",
+    category: "MOBILITY",
     image: "/images/topic-1.png",
   },
   {
+    number: "02",
     question: "Caring for Australia's Elderly: The Future of Aged Care",
+    category: "HEALTHCARE",
     image: "/images/topic-2.png",
   },
   {
+    number: "03",
     question: "What is the future of Athlete influence in Australia?",
+    category: "SPORT & CULTURE",
     image: "/images/topic-3.png",
   },
   {
+    number: "04",
     question: "Is Australia's pop culture future a mirror of the USA's?",
+    category: "IDENTITY",
     image: "/images/topic-4.png",
   },
   {
+    number: "05",
     question: "How could Australia win the Olympics in 2032?",
+    category: "AMBITION",
     image: "/images/topic-5.png",
   },
   {
-    question: "The Great Re-Education: Preparing Australians for Jobs That Don't Exist Yet",
+    number: "06",
+    question: "Preparing Australians for Jobs That Don't Exist Yet",
+    category: "EDUCATION",
     image: "/images/topic-6.png",
   },
 ];
@@ -31,233 +43,968 @@ const topics = [
 
 <BaseLayout title="Home">
   <!-- Hero Section -->
-  <section class="relative overflow-hidden py-20 md:py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-12">
-        <div class="flex-1 text-center lg:text-left">
-          <div class="inline-block bg-gold-500 text-teal-900 px-4 py-1 rounded-full text-sm font-semibold mb-6">
-            Launching in 2025
-          </div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
-            Building the Lucky Country 2.0
-          </h1>
-          <p class="text-xl text-cream-200 mb-8 max-w-xl mx-auto lg:mx-0">
-            A podcast exploring the ideas, innovations, and decisions that will shape Australia's next 50 years.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a
-              href="#signup"
-              class="bg-gold-500 text-teal-900 px-8 py-3 rounded-lg font-semibold hover:bg-gold-400 transition-colors"
-            >
-              Join the Mailing List
-            </a>
-            <a
-              href="#topics"
-              class="border border-cream-200 text-cream-100 px-8 py-3 rounded-lg font-semibold hover:bg-cream-100 hover:text-teal-900 transition-colors"
-            >
-              Explore Topics
-            </a>
-          </div>
+  <section class="hero">
+    <div class="hero-gold-diagonal"></div>
+    
+    <!-- Australia graphic on gold side -->
+    <div class="hero-australia">
+      <img src="/images/australia-circuit.png" alt="" aria-hidden="true" />
+    </div>
+    
+    <div class="hero-content">
+      <!-- Launch badge -->
+      <div class="launch-badge">
+        <span class="launch-line"></span>
+        <span class="launch-text">LAUNCHING 2025</span>
+      </div>
+      
+      <!-- Main headline -->
+      <h1 class="hero-headline">
+        <span>BUILDING</span>
+        <span>THE LUCKY</span>
+        <span class="headline-with-badge">
+          COUNTRY
+          <span class="badge-2">2.0</span>
+        </span>
+      </h1>
+      
+      <!-- Tagline -->
+      <p class="hero-tagline">
+        Bold conversations with the people reimagining Australia's future.
+      </p>
+      
+      <!-- Email signup box -->
+      <div class="hero-signup">
+        <div class="signup-header">
+          <div class="signup-icon">✉</div>
+          <span class="signup-label">GET THE INSIDE STORY</span>
         </div>
-        <div class="flex-1 relative">
-          <!-- Australia Map Graphic -->
-          <div class="relative w-full max-w-md mx-auto">
-            <svg viewBox="0 0 400 350" class="w-full h-auto">
-              <!-- Simplified Australia outline with circuit board effect -->
-              <defs>
-                <linearGradient id="circuitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#f5c518;stop-opacity:0.8" />
-                  <stop offset="100%" style="stop-color:#f5c518;stop-opacity:0.3" />
-                </linearGradient>
-              </defs>
-              <!-- Australia shape -->
-              <path
-                d="M80,120 Q60,100 70,80 Q90,60 130,70 Q160,65 190,75 Q220,70 260,80 Q300,75 330,90 Q350,110 340,140 Q350,170 340,200 Q330,230 300,250 Q270,270 230,275 Q200,290 170,280 Q140,285 110,270 Q80,250 70,220 Q60,190 70,160 Q65,140 80,120 Z"
-                fill="none"
-                stroke="url(#circuitGrad)"
-                stroke-width="2"
-              />
-              <!-- Circuit nodes -->
-              <circle cx="100" cy="120" r="4" fill="#f5c518" class="animate-pulse" />
-              <circle cx="180" cy="90" r="4" fill="#f5c518" class="animate-pulse" style="animation-delay: 0.2s" />
-              <circle cx="260" cy="100" r="4" fill="#f5c518" class="animate-pulse" style="animation-delay: 0.4s" />
-              <circle cx="320" cy="150" r="4" fill="#f5c518" class="animate-pulse" style="animation-delay: 0.6s" />
-              <circle cx="280" cy="220" r="4" fill="#f5c518" class="animate-pulse" style="animation-delay: 0.8s" />
-              <circle cx="180" cy="250" r="4" fill="#f5c518" class="animate-pulse" style="animation-delay: 1s" />
-              <circle cx="100" cy="200" r="4" fill="#f5c518" class="animate-pulse" style="animation-delay: 1.2s" />
-              <!-- Circuit lines -->
-              <line x1="100" y1="120" x2="180" y2="90" stroke="#f5c518" stroke-width="1" opacity="0.5" />
-              <line x1="180" y1="90" x2="260" y2="100" stroke="#f5c518" stroke-width="1" opacity="0.5" />
-              <line x1="260" y1="100" x2="320" y2="150" stroke="#f5c518" stroke-width="1" opacity="0.5" />
-              <line x1="320" y1="150" x2="280" y2="220" stroke="#f5c518" stroke-width="1" opacity="0.5" />
-              <line x1="280" y1="220" x2="180" y2="250" stroke="#f5c518" stroke-width="1" opacity="0.5" />
-              <line x1="180" y1="250" x2="100" y2="200" stroke="#f5c518" stroke-width="1" opacity="0.5" />
-              <line x1="100" y1="200" x2="100" y2="120" stroke="#f5c518" stroke-width="1" opacity="0.5" />
-              <!-- Inner connections -->
-              <line x1="180" y1="90" x2="180" y2="250" stroke="#f5c518" stroke-width="1" opacity="0.3" />
-              <line x1="100" y1="160" x2="280" y2="160" stroke="#f5c518" stroke-width="1" opacity="0.3" />
-            </svg>
-          </div>
-        </div>
+        <p class="signup-desc">
+          Episode emails go deeper than the show—exclusive context, extended insights, and the conversations that didn't make the cut.
+        </p>
+        <form class="signup-form">
+          <input type="email" placeholder="your@email.com" class="signup-input" />
+          <button type="submit" class="signup-button">JOIN →</button>
+        </form>
       </div>
     </div>
   </section>
 
   <!-- Topics Section -->
-  <section id="topics" class="bg-cream-100 py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4 text-teal-900">What We'll Explore</h2>
-        <p class="text-teal-800 max-w-2xl mx-auto">
-          Deep conversations with the people building, researching, and imagining Australia's future.
-        </p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {topics.map((topic) => (
-          <div class="group relative overflow-hidden rounded-xl bg-teal-800 aspect-square">
-            <img
-              src={topic.image}
-              alt={topic.question}
-              class="absolute inset-0 w-full h-full object-cover"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-teal-950 via-teal-900/30 to-transparent z-10" />
-            <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
-              <h3 class="text-lg font-display font-semibold text-white group-hover:text-gold-500 transition-colors leading-tight">
-                {topic.question}
-              </h3>
-            </div>
+  <section id="topics" class="topics">
+    <div class="topics-bar"></div>
+    <div class="container">
+      <div class="topics-header">
+        <div class="topics-title-group">
+          <div class="section-number-row">
+            <span class="section-number">01</span>
+            <span class="section-line"></span>
           </div>
+          <h2 class="section-title">WHAT WE'RE<br/>EXPLORING</h2>
+        </div>
+        <p class="topics-subtitle">Six questions. Six visions. One future.</p>
+      </div>
+      
+      <div class="topics-grid">
+        {topics.map((topic, index) => (
+          <article class={`topic-card ${index === 0 ? 'topic-card--large' : ''}`}>
+            <div class="topic-image-container">
+              <img src={topic.image} alt={topic.question} class="topic-image" />
+              <div class="topic-number-badge">
+                <span>{topic.number}</span>
+              </div>
+              <div class="topic-category-badge">
+                <span>{topic.category}</span>
+              </div>
+              <div class="topic-gradient"></div>
+              <div class="topic-content">
+                <h3 class="topic-title">{topic.question}</h3>
+              </div>
+              <div class="topic-gold-bar"></div>
+            </div>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
   <!-- Host Section -->
-  <section id="host" class="bg-gold-500 py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center gap-12">
-        <div class="flex-shrink-0">
-          <img
-            src="/images/headshot.png"
-            alt="Simon Murphy"
-            class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-teal-900"
-          />
+  <section id="host" class="host">
+    <div class="host-teal-diagonal"></div>
+    <div class="container">
+      <div class="host-grid">
+        <div class="host-image-wrapper">
+          <img src="/images/headshot.png" alt="Simon Murphy" class="host-image" />
+          <div class="host-image-frame"></div>
         </div>
-        <div class="text-center md:text-left">
-          <span class="text-teal-800 font-semibold text-sm uppercase tracking-wide">Your Host</span>
-          <h2 class="text-3xl md:text-4xl font-display font-bold text-teal-900 mt-2 mb-4">Simon Murphy</h2>
-          <p class="text-teal-800 text-lg leading-relaxed">
-            Simon Murphy is a founder, investor, and chronic over-thinker about Australia's potential. He started Future AU because he believes we could lead the world in more than just sport - and wants to talk to the people that have a bold vision for the country.
+        
+        <div class="host-content">
+          <div class="host-label-row">
+            <span class="host-line"></span>
+            <span class="host-label">YOUR HOST</span>
+          </div>
+          <h2 class="host-name">SIMON<br/>MURPHY</h2>
+          <p class="host-bio">
+            Founder, strategist, and someone who thinks Australia punches below its weight. Future AU exists to find the people with bold ideas about where this country could go—and give them a microphone.
           </p>
-          <div class="mt-6 flex gap-4 justify-center md:justify-start">
-            <a
-              href="https://www.linkedin.com/in/simon-j-murphy/"
-              target="_blank"
-              rel="noopener"
-              class="text-teal-900 hover:text-teal-700 transition-colors font-semibold"
-            >
-              LinkedIn
-            </a>
-            <span class="text-teal-700">|</span>
-            <a
-              href="https://extractingideas.substack.com/"
-              target="_blank"
-              rel="noopener"
-              class="text-teal-900 hover:text-teal-700 transition-colors font-semibold"
-            >
-              Substack
-            </a>
+          <div class="host-links">
+            <a href="https://www.linkedin.com/in/simon-j-murphy/" target="_blank" rel="noopener" class="host-link">LINKEDIN →</a>
+            <a href="https://extractingideas.substack.com/" target="_blank" rel="noopener" class="host-link">SUBSTACK →</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact/Signup Section -->
-  <section id="contact" class="bg-cream-100 py-20">
-    <div class="max-w-3xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold mb-4 text-teal-900">Get Involved</h2>
-        <p class="text-teal-700">
-          Have a topic suggestion? Want to sponsor the show? Get in touch.
-        </p>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-header">
+          <div class="section-number-row">
+            <span class="section-number">02</span>
+            <span class="section-line section-line--gold"></span>
+          </div>
+          <h2 class="section-title section-title--light">GET IN<br/>TOUCH</h2>
+          <p class="contact-desc">
+            Got a topic we should cover? Want to sponsor? Know someone we should talk to? Let's hear it.
+          </p>
+        </div>
+        
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">NAME</label>
+              <input type="text" id="name" name="name" placeholder="Your name" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">EMAIL</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" class="form-input" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="type" class="form-label">ENQUIRY TYPE</label>
+            <select id="type" name="type" class="form-input form-select">
+              <option value="topic">Suggest a topic</option>
+              <option value="guest">Recommend a guest</option>
+              <option value="sponsor">Sponsorship</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">MESSAGE</label>
+            <textarea id="message" name="message" rows="4" placeholder="What's on your mind?" class="form-input form-textarea"></textarea>
+          </div>
+          <button type="submit" class="form-submit">SEND IT →</button>
+        </form>
       </div>
-      <form class="space-y-6">
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <label for="name" class="block text-sm font-medium text-teal-800 mb-2">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="w-full px-4 py-3 rounded-lg bg-white border border-cream-300 text-teal-900 placeholder-teal-400 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-              placeholder="Your name"
-            />
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-medium text-teal-800 mb-2">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="w-full px-4 py-3 rounded-lg bg-white border border-cream-300 text-teal-900 placeholder-teal-400 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-              placeholder="you@example.com"
-            />
-          </div>
-        </div>
-        <div>
-          <label for="type" class="block text-sm font-medium text-teal-800 mb-2">I'm interested in...</label>
-          <select
-            id="type"
-            name="type"
-            class="w-full px-4 py-3 rounded-lg bg-white border border-cream-300 text-teal-900 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-          >
-            <option value="mailing">Joining the mailing list</option>
-            <option value="topic">Suggesting a topic</option>
-            <option value="sponsor">Sponsorship opportunities</option>
-            <option value="other">Something else</option>
-          </select>
-        </div>
-        <div>
-          <label for="message" class="block text-sm font-medium text-teal-800 mb-2">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            class="w-full px-4 py-3 rounded-lg bg-white border border-cream-300 text-teal-900 placeholder-teal-400 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-            placeholder="Your message..."
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          class="w-full bg-teal-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-teal-800 transition-colors"
-        >
-          Send Message
-        </button>
-      </form>
     </div>
   </section>
 
-  <!-- Mailing List CTA -->
-  <section id="signup" class="bg-teal-950 py-16">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Don't Miss an Episode</h2>
-      <p class="text-cream-200 mb-8">
-        Be the first to know when Future AU launches. Join the mailing list for early access and exclusive content.
+  <!-- Final CTA -->
+  <section id="signup" class="final-cta">
+    <div class="cta-gold-bg"></div>
+    <div class="cta-teal-diagonal"></div>
+    
+    <div class="cta-australia">
+      <img src="/images/australia-circuit.png" alt="" aria-hidden="true" />
+    </div>
+    
+    <div class="cta-content">
+      <h2 class="cta-headline">
+        <span class="cta-headline-gold">DON'T JUST LISTEN.</span>
+        <span class="cta-headline-teal">GET THE FULL STORY.</span>
+      </h2>
+      <p class="cta-desc">
+        Every episode email includes extended show notes, bonus insights, and the stuff that didn't make the final cut.
       </p>
-      <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-        <input
-          type="email"
-          placeholder="Enter your email"
-          class="flex-1 px-4 py-3 rounded-lg bg-teal-800 border border-teal-700 text-white placeholder-teal-500 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-        />
-        <button
-          type="submit"
-          class="bg-gold-500 text-teal-900 px-6 py-3 rounded-lg font-semibold hover:bg-gold-400 transition-colors whitespace-nowrap"
-        >
-          Subscribe
-        </button>
+      <form class="cta-form">
+        <input type="email" placeholder="your@email.com" class="cta-input" />
+        <button type="submit" class="cta-button">I'M IN</button>
       </form>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* ===== VARIABLES ===== */
+  :root {
+    --teal-dark: #0a3a3a;
+    --teal: #0d4a4a;
+    --teal-mid: #156b6b;
+    --teal-light: #7ab5b5;
+    --gold: #f5c518;
+    --gold-hover: #f7d04c;
+    --cream: #f5f3e8;
+    --white: #ffffff;
+  }
+
+  /* ===== UTILITIES ===== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: var(--teal-dark);
+  }
+
+  .hero-gold-diagonal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    background-color: var(--gold);
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .hero-australia {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    width: 400px;
+    height: 350px;
+    transform: translateY(-50%);
+    opacity: 0.2;
+  }
+
+  .hero-australia img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px 24px 80px;
+  }
+
+  .launch-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .launch-line {
+    width: 48px;
+    height: 4px;
+    background-color: var(--gold);
+  }
+
+  .launch-text {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    margin-bottom: 32px;
+  }
+
+  .hero-headline span {
+    display: block;
+    font-size: clamp(56px, 11vw, 130px);
+    line-height: 0.9;
+    color: var(--white);
+  }
+
+  .headline-with-badge {
+    display: flex !important;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .badge-2 {
+    display: inline-block !important;
+    background-color: var(--gold);
+    color: var(--teal-dark);
+    padding: 4px 16px;
+    margin-left: 16px;
+    transform: rotate(-2deg);
+    font-size: 0.45em !important;
+  }
+
+  .hero-tagline {
+    font-size: 20px;
+    color: var(--white);
+    max-width: 400px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .hero-signup {
+    background-color: var(--teal-dark);
+    border-left: 4px solid var(--gold);
+    padding: 32px;
+    max-width: 500px;
+  }
+
+  .signup-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .signup-icon {
+    width: 32px;
+    height: 32px;
+    background-color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal-dark);
+    font-size: 16px;
+  }
+
+  .signup-label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+  }
+
+  .signup-desc {
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  .signup-form {
+    display: flex;
+  }
+
+  .signup-input {
+    flex: 1;
+    padding: 16px 20px;
+    background-color: rgba(21, 107, 107, 0.3);
+    border: 2px solid var(--teal-mid);
+    color: var(--white);
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .signup-input::placeholder {
+    color: var(--teal-light);
+  }
+
+  .signup-input:focus {
+    border-color: var(--gold);
+  }
+
+  .signup-button {
+    padding: 16px 32px;
+    background-color: var(--gold);
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+  }
+
+  .signup-button:hover {
+    background-color: var(--gold-hover);
+  }
+
+  /* ===== TOPICS ===== */
+  .topics {
+    background-color: var(--cream);
+    padding: 96px 0;
+    position: relative;
+  }
+
+  .topics-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background-color: var(--gold);
+  }
+
+  .topics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .section-number-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .section-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .section-line {
+    width: 64px;
+    height: 4px;
+    background-color: var(--teal-dark);
+  }
+
+  .section-line--gold {
+    background-color: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    line-height: 0.9;
+    color: var(--teal-dark);
+  }
+
+  .section-title--light {
+    color: var(--white);
+  }
+
+  .topics-subtitle {
+    font-size: 18px;
+    color: var(--teal-dark);
+    max-width: 350px;
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .topic-card {
+    position: relative;
+    background-color: var(--teal-dark);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .topic-card--large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .topic-image-container {
+    position: relative;
+    padding-top: 100%;
+  }
+
+  .topic-card--large .topic-image-container {
+    padding-top: 80%;
+  }
+
+  .topic-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .topic-card:hover .topic-image {
+    transform: scale(1.05);
+  }
+
+  .topic-number-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: var(--gold);
+    padding: 4px 12px;
+    z-index: 20;
+  }
+
+  .topic-number-badge span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--teal-dark);
+  }
+
+  .topic-category-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: rgba(10, 58, 58, 0.9);
+    padding: 4px 12px;
+    z-index: 20;
+  }
+
+  .topic-category-badge span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--white);
+  }
+
+  .topic-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--teal-dark) 0%, rgba(10,58,58,0.5) 60%, transparent 100%);
+  }
+
+  .topic-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    z-index: 10;
+  }
+
+  .topic-title {
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    font-size: 17px;
+    transition: color 0.3s ease;
+  }
+
+  .topic-card--large .topic-title {
+    font-size: 26px;
+  }
+
+  .topic-card:hover .topic-title {
+    color: var(--gold);
+  }
+
+  .topic-gold-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--gold);
+  }
+
+  /* ===== HOST ===== */
+  .host {
+    background-color: var(--gold);
+    padding: 96px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .host-teal-diagonal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 100%;
+    background-color: var(--teal-dark);
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .host-grid {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
+  }
+
+  .host-image-wrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .host-image {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .host-image-frame {
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    width: 100%;
+    height: 100%;
+    border: 4px solid var(--teal-dark);
+    z-index: -1;
+  }
+
+  .host-content {
+    max-width: 500px;
+  }
+
+  .host-label-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .host-line {
+    width: 32px;
+    height: 4px;
+    background-color: var(--teal-dark);
+  }
+
+  .host-label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--teal-dark);
+  }
+
+  .host-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: var(--teal-dark);
+    line-height: 0.85;
+    margin-bottom: 24px;
+  }
+
+  .host-bio {
+    color: var(--teal-dark);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .host-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .host-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--teal-dark);
+    color: var(--white);
+    padding: 12px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .host-link:hover {
+    background-color: var(--teal-mid);
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    background-color: var(--teal-dark);
+    padding: 96px 0;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .contact-desc {
+    color: var(--white);
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 350px;
+    margin-top: 24px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 16px 20px;
+    background-color: rgba(21, 107, 107, 0.3);
+    border: 2px solid var(--teal-mid);
+    color: var(--white);
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-input::placeholder {
+    color: var(--teal-light);
+  }
+
+  .form-input:focus {
+    border-color: var(--gold);
+  }
+
+  .form-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f5c518' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 48px;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-submit {
+    align-self: flex-start;
+    padding: 16px 32px;
+    background-color: var(--gold);
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+  }
+
+  .form-submit:hover {
+    background-color: var(--gold-hover);
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    position: relative;
+    padding: 96px 0;
+    overflow: hidden;
+  }
+
+  .cta-gold-bg {
+    position: absolute;
+    inset: 0;
+    background-color: var(--gold);
+  }
+
+  .cta-teal-diagonal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    background-color: var(--teal-dark);
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .cta-australia {
+    position: absolute;
+    bottom: -50px;
+    left: 5%;
+    width: 300px;
+    height: 260px;
+    opacity: 0.1;
+  }
+
+  .cta-australia img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 10;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .cta-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .cta-headline-gold {
+    display: inline-block;
+    background-color: var(--gold);
+    color: var(--teal-dark);
+    padding: 8px 16px;
+  }
+
+  .cta-headline-teal {
+    display: inline-block;
+    background-color: var(--teal-dark);
+    color: var(--white);
+    padding: 8px 16px;
+    margin-top: 8px;
+  }
+
+  .cta-desc {
+    font-size: 17px;
+    color: var(--teal-dark);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    background-color: rgba(245, 197, 24, 0.9);
+    padding: 16px;
+    display: inline-block;
+  }
+
+  .cta-form {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: var(--teal-dark);
+    padding: 8px;
+  }
+
+  .cta-input {
+    flex: 1;
+    padding: 16px 24px;
+    background-color: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+  }
+
+  .cta-input::placeholder {
+    color: var(--teal-light);
+  }
+
+  .cta-button {
+    padding: 16px 40px;
+    background-color: var(--gold);
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: var(--gold-hover);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .topics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .topic-card--large {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+    
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-gold-diagonal {
+      width: 100%;
+      height: 40%;
+      top: auto;
+      bottom: 0;
+      clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
+    }
+    
+    .hero-australia {
+      display: none;
+    }
+    
+    .signup-form {
+      flex-direction: column;
+    }
+    
+    .topics-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .topic-card--large {
+      grid-column: span 1;
+    }
+    
+    .host-grid {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .host-label-row {
+      justify-content: center;
+    }
+    
+    .host-links {
+      justify-content: center;
+    }
+    
+    .host-teal-diagonal {
+      display: none;
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-submit {
+      width: 100%;
+    }
+    
+    .cta-form {
+      flex-direction: column;
+    }
+    
+    .cta-teal-diagonal {
+      display: none;
+    }
+  }
+</style>
