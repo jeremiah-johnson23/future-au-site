@@ -48,7 +48,7 @@ const topics = [
     
     <!-- Australia graphic on gold side -->
     <div class="hero-australia">
-      <img src="/images/australia-circuit.png" alt="" aria-hidden="true" />
+      <img src="/images/logo-green.png" alt="" aria-hidden="true" />
     </div>
     
     <div class="hero-content">
@@ -73,8 +73,13 @@ const topics = [
         Bold conversations with the people reimagining Australia's future.
       </p>
       
-      <!-- Email signup box -->
-      <div class="hero-signup">
+    </div>
+  </section>
+
+  <!-- Signup Section -->
+  <section class="signup-section">
+    <div class="signup-section-inner">
+      <div class="signup-left">
         <div class="signup-header">
           <div class="signup-icon">✉</div>
           <span class="signup-label">GET THE INSIDE STORY</span>
@@ -82,6 +87,8 @@ const topics = [
         <p class="signup-desc">
           Episode emails go deeper than the show—exclusive context, extended insights, and the conversations that didn't make the cut.
         </p>
+      </div>
+      <div class="signup-right">
         <form class="signup-form">
           <input type="email" placeholder="your@email.com" class="signup-input" />
           <button type="submit" class="signup-button">JOIN →</button>
@@ -96,13 +103,8 @@ const topics = [
     <div class="container">
       <div class="topics-header">
         <div class="topics-title-group">
-          <div class="section-number-row">
-            <span class="section-number">01</span>
-            <span class="section-line"></span>
-          </div>
           <h2 class="section-title">WHAT WE'RE<br/>EXPLORING</h2>
         </div>
-        <p class="topics-subtitle">Six questions. Six visions. One future.</p>
       </div>
       
       <div class="topics-grid">
@@ -161,10 +163,6 @@ const topics = [
     <div class="container">
       <div class="contact-grid">
         <div class="contact-header">
-          <div class="section-number-row">
-            <span class="section-number">02</span>
-            <span class="section-line section-line--gold"></span>
-          </div>
           <h2 class="section-title section-title--light">GET IN<br/>TOUCH</h2>
           <p class="contact-desc">
             Got a topic we should cover? Want to sponsor? Know someone we should talk to? Let's hear it.
@@ -249,7 +247,6 @@ const topics = [
   /* ===== HERO ===== */
   .hero {
     position: relative;
-    min-height: 100vh;
     overflow: hidden;
     background-color: var(--teal-dark);
   }
@@ -266,12 +263,14 @@ const topics = [
 
   .hero-australia {
     position: absolute;
-    top: 50%;
-    right: 5%;
-    width: 400px;
-    height: 350px;
-    transform: translateY(-50%);
-    opacity: 0.2;
+    top: 140px;
+    right: 0;
+    width: 45%;
+    bottom: 80px;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-australia img {
@@ -341,14 +340,30 @@ const topics = [
     color: var(--white);
     max-width: 400px;
     line-height: 1.6;
-    margin-bottom: 40px;
+    margin-bottom: 0;
   }
 
-  .hero-signup {
+  .signup-section {
     background-color: var(--teal-dark);
-    border-left: 4px solid var(--gold);
-    padding: 32px;
-    max-width: 500px;
+    border-top: 4px solid var(--gold);
+  }
+
+  .signup-section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .signup-left {
+    flex: 1;
+  }
+
+  .signup-right {
+    flex: 1;
   }
 
   .signup-header {
@@ -962,10 +977,14 @@ const topics = [
       display: none;
     }
     
+    .signup-section-inner {
+      flex-direction: column;
+    }
+
     .signup-form {
       flex-direction: column;
     }
-    
+
     .topics-grid {
       grid-template-columns: 1fr;
     }
