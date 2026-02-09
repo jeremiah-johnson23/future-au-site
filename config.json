@@ -1,0 +1,30 @@
+{
+  "framework": {
+    "version": "1.0",
+    "intensity": "medium",
+    "provider": "claude-code"
+  },
+  "project": {
+    "name": "Future AU",
+    "type": "podcast-platform",
+    "description": "End-to-end podcast platform — website, research, distribution, promotion, guest recruitment"
+  },
+  "collaboration": {
+    "aiName": "Pod",
+    "humanName": "Simon",
+    "communicationStyle": "rapid",
+    "explorationStyle": "adaptive"
+  },
+  "sessions": {
+    "count": 0,
+    "lastHealthCheck": 0,
+    "healthCheckCadence": 30
+  },
+  "upstreamContributions": {
+    "policy": "enabled"
+  },
+  "journal": {
+    "format": "flat",
+    "bosLoadLastN": 10
+  }
+}
