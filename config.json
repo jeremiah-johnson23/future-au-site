@@ -16,7 +16,7 @@
     "explorationStyle": "adaptive"
   },
   "sessions": {
-    "count": 0,
+    "count": 1,
     "lastHealthCheck": 0,
     "healthCheckCadence": 30
   },
