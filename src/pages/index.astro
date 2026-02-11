@@ -55,7 +55,7 @@ const topics = [
       <!-- Launch badge -->
       <div class="launch-badge">
         <span class="launch-line"></span>
-        <span class="launch-text">LAUNCHING 2025</span>
+        <span class="launch-text">LAUNCHING 2026</span>
       </div>
       
       <!-- Main headline -->
@@ -85,14 +85,62 @@ const topics = [
           <span class="signup-label">GET THE INSIDE STORY</span>
         </div>
         <p class="signup-desc">
-          Episode emails go deeper than the show—exclusive context, extended insights, and the conversations that didn't make the cut.
+          Before each episode drops, 4 graphs hit social. The rest? Bonus analysis, extra data, and the research that shaped the conversation. That part's just for subscribers.
         </p>
+
+        <!-- Stacked slide card mockup -->
+        <div class="slide-stack">
+          <div class="slide-card slide-card--back2">
+            <div class="slide-card-inner slide-card-inner--blurred">
+              <div class="slide-bar slide-bar--tall"></div>
+              <div class="slide-bar slide-bar--mid"></div>
+              <div class="slide-bar slide-bar--short"></div>
+              <div class="slide-bar slide-bar--tall"></div>
+              <div class="slide-overlay">
+                <span>SUBSCRIBERS ONLY</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide-card slide-card--back1">
+            <div class="slide-card-inner slide-card-inner--blurred">
+              <div class="slide-bar slide-bar--short"></div>
+              <div class="slide-bar slide-bar--tall"></div>
+              <div class="slide-bar slide-bar--mid"></div>
+              <div class="slide-bar slide-bar--short"></div>
+              <div class="slide-overlay">
+                <span>SUBSCRIBERS ONLY</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide-card slide-card--front">
+            <div class="slide-card-inner">
+              <div class="slide-card-header">
+                <div class="slide-avatar"></div>
+                <div class="slide-meta">
+                  <div class="slide-name"></div>
+                  <div class="slide-date"></div>
+                </div>
+              </div>
+              <div class="slide-chart">
+                <div class="slide-bar slide-bar--short"></div>
+                <div class="slide-bar slide-bar--tall"></div>
+                <div class="slide-bar slide-bar--mid"></div>
+                <div class="slide-bar slide-bar--tall"></div>
+              </div>
+              <div class="slide-card-label">1 of 4 public slides</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="signup-right">
-        <form class="signup-form">
-          <input type="email" placeholder="your@email.com" class="signup-input" />
+        <form class="signup-form" id="signup-form-top">
+          <input type="email" placeholder="your@email.com" class="signup-input" required />
+          <div style="position:absolute;left:-9999px;" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </div>
           <button type="submit" class="signup-button">JOIN →</button>
         </form>
+        <div class="form-message" id="signup-top-message"></div>
       </div>
     </div>
   </section>
@@ -147,7 +195,7 @@ const topics = [
           </div>
           <h2 class="host-name">SIMON<br/>MURPHY</h2>
           <p class="host-bio">
-            Founder, strategist, and someone who thinks Australia punches below its weight. Future AU exists to find the people with bold ideas about where this country could go—and give them a microphone.
+            Founder, strategist, and someone who thinks Australia punches below its weight. Future AU exists to find the people with bold ideas about where this country could go, and give them a microphone.
           </p>
           <div class="host-links">
             <a href="https://www.linkedin.com/in/simon-j-murphy/" target="_blank" rel="noopener" class="host-link">LINKEDIN →</a>
@@ -169,20 +217,20 @@ const topics = [
           </p>
         </div>
         
-        <form class="contact-form">
+        <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div class="form-group">
-              <label for="name" class="form-label">NAME</label>
-              <input type="text" id="name" name="name" placeholder="Your name" class="form-input" />
+              <label for="contact-name" class="form-label">NAME</label>
+              <input type="text" id="contact-name" name="name" placeholder="Your name" class="form-input" required />
             </div>
             <div class="form-group">
-              <label for="email" class="form-label">EMAIL</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" class="form-input" />
+              <label for="contact-email" class="form-label">EMAIL</label>
+              <input type="email" id="contact-email" name="email" placeholder="your@email.com" class="form-input" required />
             </div>
           </div>
           <div class="form-group">
-            <label for="type" class="form-label">ENQUIRY TYPE</label>
-            <select id="type" name="type" class="form-input form-select">
+            <label for="contact-type" class="form-label">ENQUIRY TYPE</label>
+            <select id="contact-type" name="type" class="form-input form-select">
               <option value="topic">Suggest a topic</option>
               <option value="guest">Recommend a guest</option>
               <option value="sponsor">Sponsorship</option>
@@ -190,10 +238,14 @@ const topics = [
             </select>
           </div>
           <div class="form-group">
-            <label for="message" class="form-label">MESSAGE</label>
-            <textarea id="message" name="message" rows="4" placeholder="What's on your mind?" class="form-input form-textarea"></textarea>
+            <label for="contact-message" class="form-label">MESSAGE</label>
+            <textarea id="contact-message" name="message" rows="4" placeholder="What's on your mind?" class="form-input form-textarea" required></textarea>
+          </div>
+          <div style="position:absolute;left:-9999px;" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
           </div>
           <button type="submit" class="form-submit">SEND IT →</button>
+          <div class="form-message" id="contact-message-el"></div>
         </form>
       </div>
     </div>
@@ -204,10 +256,6 @@ const topics = [
     <div class="cta-gold-bg"></div>
     <div class="cta-teal-diagonal"></div>
     
-    <div class="cta-australia">
-      <img src="/images/australia-circuit.png" alt="" aria-hidden="true" />
-    </div>
-    
     <div class="cta-content">
       <h2 class="cta-headline">
         <span class="cta-headline-gold">DON'T JUST LISTEN.</span>
@@ -216,13 +264,100 @@ const topics = [
       <p class="cta-desc">
         Every episode email includes extended show notes, bonus insights, and the stuff that didn't make the final cut.
       </p>
-      <form class="cta-form">
-        <input type="email" placeholder="your@email.com" class="cta-input" />
+      <form class="cta-form" id="signup-form-bottom">
+        <input type="email" placeholder="your@email.com" class="cta-input" required />
+        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </div>
         <button type="submit" class="cta-button">I'M IN</button>
       </form>
+      <div class="form-message cta-message" id="signup-bottom-message"></div>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  function handleSubscribe(form, messageEl) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = '...';
+      messageEl.textContent = '';
+      messageEl.className = 'form-message';
+
+      try {
+        const formData = new FormData(form);
+        const emailInput = form.querySelector('input[type="email"]');
+        formData.set('email', emailInput.value);
+
+        const res = await fetch('/api/subscribe', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (data.ok) {
+          messageEl.textContent = data.message || "You're in.";
+          messageEl.classList.add('form-message--success');
+          emailInput.value = '';
+        } else {
+          messageEl.textContent = data.error || 'Something went wrong.';
+          messageEl.classList.add('form-message--error');
+        }
+      } catch {
+        messageEl.textContent = 'Something went wrong. Try again.';
+        messageEl.classList.add('form-message--error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    });
+  }
+
+  // Wire up both signup forms
+  const topForm = document.getElementById('signup-form-top');
+  const topMsg = document.getElementById('signup-top-message');
+  if (topForm && topMsg) handleSubscribe(topForm, topMsg);
+
+  const bottomForm = document.getElementById('signup-form-bottom');
+  const bottomMsg = document.getElementById('signup-bottom-message');
+  if (bottomForm && bottomMsg) handleSubscribe(bottomForm, bottomMsg);
+
+  // Contact form
+  const contactForm = document.getElementById('contact-form');
+  const contactMsg = document.getElementById('contact-message-el');
+  if (contactForm && contactMsg) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = contactForm.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'SENDING...';
+      contactMsg.textContent = '';
+      contactMsg.className = 'form-message';
+
+      try {
+        const formData = new FormData(contactForm);
+        const res = await fetch('/api/contact', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (data.ok) {
+          contactMsg.textContent = data.message || 'Message sent.';
+          contactMsg.classList.add('form-message--success');
+          contactForm.reset();
+        } else {
+          contactMsg.textContent = data.error || 'Something went wrong.';
+          contactMsg.classList.add('form-message--error');
+        }
+      } catch {
+        contactMsg.textContent = 'Something went wrong. Try again.';
+        contactMsg.classList.add('form-message--error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    });
+  }
+</script>
 
 <style>
   /* ===== VARIABLES ===== */
@@ -438,6 +573,166 @@ const topics = [
     background-color: var(--gold-hover);
   }
 
+  .form-message {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    min-height: 20px;
+  }
+
+  .form-message--success {
+    color: var(--gold);
+  }
+
+  .form-message--error {
+    color: #ff6b6b;
+  }
+
+  /* ===== SLIDE STACK MOCKUP ===== */
+  .slide-stack {
+    position: relative;
+    width: 280px;
+    height: 200px;
+    margin-top: 32px;
+  }
+
+  .slide-card {
+    position: absolute;
+    width: 240px;
+    height: 160px;
+    border-radius: 8px;
+    background: var(--white);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+  }
+
+  .slide-card--front {
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+  }
+
+  .slide-card--back1 {
+    z-index: 2;
+    bottom: 12px;
+    left: 18px;
+    transform: rotate(2deg);
+  }
+
+  .slide-card--back2 {
+    z-index: 1;
+    bottom: 22px;
+    left: 34px;
+    transform: rotate(4deg);
+  }
+
+  .slide-card-inner {
+    padding: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .slide-card-inner--blurred {
+    filter: blur(3px);
+  }
+
+  .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 58, 58, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    filter: blur(0);
+    z-index: 5;
+  }
+
+  .slide-overlay span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    background: var(--teal-dark);
+    padding: 6px 14px;
+  }
+
+  .slide-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .slide-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--teal-light);
+  }
+
+  .slide-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .slide-name {
+    width: 60px;
+    height: 6px;
+    background: var(--teal-dark);
+    border-radius: 3px;
+  }
+
+  .slide-date {
+    width: 40px;
+    height: 4px;
+    background: var(--teal-light);
+    border-radius: 2px;
+  }
+
+  .slide-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex: 1;
+    padding-bottom: 8px;
+  }
+
+  .slide-bar {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .slide-bar--tall {
+    height: 70%;
+    background: var(--gold);
+  }
+
+  .slide-bar--mid {
+    height: 50%;
+    background: var(--teal-mid);
+  }
+
+  .slide-bar--short {
+    height: 30%;
+    background: var(--teal-light);
+  }
+
+  .slide-card-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--teal-light);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
   /* ===== TOPICS ===== */
   .topics {
     background-color: var(--cream);
@@ -450,7 +745,7 @@ const topics = [
     top: 0;
     left: 0;
     right: 0;
-    height: 8px;
+    height: 4px;
     background-color: var(--gold);
   }
 
@@ -850,21 +1145,6 @@ const topics = [
     clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
   }
 
-  .cta-australia {
-    position: absolute;
-    bottom: -50px;
-    left: 5%;
-    width: 300px;
-    height: 260px;
-    opacity: 0.1;
-  }
-
-  .cta-australia img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
   .cta-content {
     position: relative;
     z-index: 10;
@@ -943,6 +1223,12 @@ const topics = [
     transition: background-color 0.3s ease;
   }
 
+  .cta-message {
+    text-align: center;
+    max-width: 480px;
+    margin: 12px auto 0;
+  }
+
   .cta-button:hover {
     background-color: var(--gold-hover);
   }
@@ -983,6 +1269,10 @@ const topics = [
 
     .signup-form {
       flex-direction: column;
+    }
+
+    .slide-stack {
+      margin: 32px auto 0;
     }
 
     .topics-grid {
