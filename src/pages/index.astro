@@ -88,75 +88,6 @@ const topics = [
     </div>
   </section>
 
-  <!-- Signup Section -->
-  <section class="signup-section">
-    <div class="signup-section-inner">
-      <div class="signup-left">
-        <div class="signup-header">
-          <div class="signup-icon">✉</div>
-          <span class="signup-label">GET THE INSIDE STORY</span>
-        </div>
-        <p class="signup-desc">
-          Before each episode drops, 4 graphs hit social. The rest? Bonus analysis, extra data, and the research that shaped the conversation. That part's just for subscribers.
-        </p>
-
-        <!-- Stacked slide card mockup -->
-        <div class="slide-stack">
-          <div class="slide-card slide-card--back2">
-            <div class="slide-card-inner slide-card-inner--blurred">
-              <div class="slide-bar slide-bar--tall"></div>
-              <div class="slide-bar slide-bar--mid"></div>
-              <div class="slide-bar slide-bar--short"></div>
-              <div class="slide-bar slide-bar--tall"></div>
-              <div class="slide-overlay">
-                <span>SUBSCRIBERS ONLY</span>
-              </div>
-            </div>
-          </div>
-          <div class="slide-card slide-card--back1">
-            <div class="slide-card-inner slide-card-inner--blurred">
-              <div class="slide-bar slide-bar--short"></div>
-              <div class="slide-bar slide-bar--tall"></div>
-              <div class="slide-bar slide-bar--mid"></div>
-              <div class="slide-bar slide-bar--short"></div>
-              <div class="slide-overlay">
-                <span>SUBSCRIBERS ONLY</span>
-              </div>
-            </div>
-          </div>
-          <div class="slide-card slide-card--front">
-            <div class="slide-card-inner">
-              <div class="slide-card-header">
-                <div class="slide-avatar"></div>
-                <div class="slide-meta">
-                  <div class="slide-name"></div>
-                  <div class="slide-date"></div>
-                </div>
-              </div>
-              <div class="slide-chart">
-                <div class="slide-bar slide-bar--short"></div>
-                <div class="slide-bar slide-bar--tall"></div>
-                <div class="slide-bar slide-bar--mid"></div>
-                <div class="slide-bar slide-bar--tall"></div>
-              </div>
-              <div class="slide-card-label">1 of 4 public slides</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="signup-right">
-        <form class="signup-form" id="signup-form-top">
-          <input type="email" placeholder="your@email.com" class="signup-input" required />
-          <div style="position:absolute;left:-9999px;" aria-hidden="true">
-            <input type="text" name="website" tabindex="-1" autocomplete="off" />
-          </div>
-          <button type="submit" class="signup-button">JOIN →</button>
-        </form>
-        <div class="form-message" id="signup-top-message"></div>
-      </div>
-    </div>
-  </section>
-
   <!-- Topics Section -->
   <section id="topics" class="topics">
     <div class="topics-bar"></div>
@@ -190,9 +121,63 @@ const topics = [
     </div>
   </section>
 
+  <!-- Signup Section -->
+  <section class="signup-section">
+    <div class="signup-grid">
+
+      <!-- LEFT: Copy -->
+      <div class="signup-copy">
+        <div class="signup-label">FREE WITH EVERY EPISODE</div>
+        <h2 class="signup-headline">
+          THE RESEARCH<br>
+          THAT BUILT THE<br>
+          <span class="gold">CONVERSATION.</span>
+        </h2>
+        <p class="signup-description">
+          Every episode starts with a deep-dive into the data. The graphs, the sources, the questions we built the interview around — <strong>free in your inbox before each episode drops.</strong>
+        </p>
+      </div>
+
+      <!-- RIGHT: Form + preview -->
+      <div class="signup-action">
+        <div class="signup-form-wrapper">
+          <form class="signup-form" id="signup-form-top">
+            <input type="email" class="signup-input" placeholder="your@email.com" required />
+            <div style="position:absolute;left:-9999px;" aria-hidden="true">
+              <input type="text" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <button type="submit" class="signup-button">JOIN →</button>
+          </form>
+          <div class="form-message" id="signup-top-message"></div>
+
+          <div class="signup-preview">
+            <div class="preview-item">
+              <div class="preview-number">01</div>
+              <div class="preview-text">Research pack & source data</div>
+            </div>
+            <div class="preview-item">
+              <div class="preview-number">02</div>
+              <div class="preview-text">Key graphs before they hit social</div>
+            </div>
+            <div class="preview-item">
+              <div class="preview-number">03</div>
+              <div class="preview-text">The questions that shaped the interview</div>
+            </div>
+            <div class="preview-item">
+              <div class="preview-number">04</div>
+              <div class="preview-text">Bonus analysis that didn't make the cut</div>
+            </div>
+          </div>
+
+          <p class="signup-trust">Episode notifications only. No spam. Unsubscribe anytime.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Host Section -->
   <section id="host" class="host">
-    <div class="host-teal-diagonal"></div>
     <div class="container">
       <div class="host-grid">
         <div class="host-image-wrapper">
@@ -263,29 +248,6 @@ const topics = [
     </div>
   </section>
 
-  <!-- Final CTA -->
-  <section id="signup" class="final-cta">
-    <div class="cta-gold-bg"></div>
-    <div class="cta-teal-diagonal"></div>
-    
-    <div class="cta-content">
-      <h2 class="cta-headline">
-        <span class="cta-headline-gold">DON'T JUST LISTEN.</span>
-        <span class="cta-headline-teal">GET THE FULL STORY.</span>
-      </h2>
-      <p class="cta-desc">
-        Every episode email includes extended show notes, bonus insights, and the stuff that didn't make the final cut.
-      </p>
-      <form class="cta-form" id="signup-form-bottom">
-        <input type="email" placeholder="your@email.com" class="cta-input" required />
-        <div style="position:absolute;left:-9999px;" aria-hidden="true">
-          <input type="text" name="website" tabindex="-1" autocomplete="off" />
-        </div>
-        <button type="submit" class="cta-button">I'M IN</button>
-      </form>
-      <div class="form-message cta-message" id="signup-bottom-message"></div>
-    </div>
-  </section>
 </BaseLayout>
 
 <script>
@@ -330,9 +292,6 @@ const topics = [
   const topMsg = document.getElementById('signup-top-message');
   if (topForm && topMsg) handleSubscribe(topForm, topMsg);
 
-  const bottomForm = document.getElementById('signup-form-bottom');
-  const bottomMsg = document.getElementById('signup-bottom-message');
-  if (bottomForm && bottomMsg) handleSubscribe(bottomForm, bottomMsg);
 
   // Contact form
   const contactForm = document.getElementById('contact-form');
@@ -494,99 +453,190 @@ const topics = [
     margin-bottom: 0;
   }
 
+  /* ===== SIGNUP SECTION ===== */
   .signup-section {
     background-color: var(--teal-dark);
-    border-top: 4px solid var(--gold);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .signup-section-inner {
+  .signup-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 24px;
+    width: 120px;
+    height: 6px;
+    background-color: var(--gold);
+  }
+
+  .signup-grid {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 48px 24px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
     align-items: center;
-    justify-content: space-between;
-    gap: 48px;
   }
 
-  .signup-left {
-    flex: 1;
-  }
-
-  .signup-right {
-    flex: 1;
-  }
-
-  .signup-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .signup-icon {
-    width: 32px;
-    height: 32px;
-    background-color: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--teal-dark);
-    font-size: 16px;
+  .signup-copy {
+    position: relative;
   }
 
   .signup-label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
-  .signup-desc {
+  .signup-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 2px;
+    background-color: var(--gold);
+    opacity: 0.4;
+  }
+
+  .signup-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 6vw, 80px);
+    line-height: 0.92;
     color: var(--white);
-    margin-bottom: 24px;
-    line-height: 1.6;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .signup-headline .gold {
+    color: var(--gold);
+    display: block;
+  }
+
+  .signup-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--cream);
+    max-width: 440px;
+    opacity: 0.9;
+  }
+
+  .signup-description strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .signup-action {
+    position: relative;
+  }
+
+  .signup-action::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -20px;
+    width: 180px;
+    height: 180px;
+    background-color: var(--gold);
+    opacity: 0.08;
+    transform: rotate(-12deg);
+    z-index: 0;
+  }
+
+  .signup-form-wrapper {
+    position: relative;
+    z-index: 1;
   }
 
   .signup-form {
     display: flex;
+    margin-bottom: 32px;
   }
 
   .signup-input {
     flex: 1;
-    padding: 16px 20px;
-    background-color: rgba(21, 107, 107, 0.3);
+    padding: 20px 24px;
+    background-color: rgba(21, 107, 107, 0.25);
     border: 2px solid var(--teal-mid);
     color: var(--white);
     font-size: 16px;
     font-family: inherit;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
   }
 
   .signup-input::placeholder {
     color: var(--teal-light);
+    font-size: 15px;
   }
 
   .signup-input:focus {
     border-color: var(--gold);
+    background-color: rgba(21, 107, 107, 0.4);
   }
 
   .signup-button {
-    padding: 16px 32px;
+    padding: 20px 36px;
     background-color: var(--gold);
     color: var(--teal-dark);
     font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.1em;
+    font-size: 15px;
+    letter-spacing: 0.12em;
     border: none;
     cursor: pointer;
     font-family: inherit;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
   }
 
   .signup-button:hover {
     background-color: var(--gold-hover);
+    transform: translateX(2px);
+  }
+
+  .signup-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .preview-item {
+    padding: 20px;
+    background-color: rgba(21, 107, 107, 0.15);
+    border-left: 3px solid var(--gold);
+    transition: background-color 0.3s ease;
+  }
+
+  .preview-item:hover {
+    background-color: rgba(21, 107, 107, 0.25);
+  }
+
+  .preview-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .preview-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cream);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  .signup-trust {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--teal-light);
+    letter-spacing: 0.05em;
   }
 
   .form-message {
@@ -605,149 +655,6 @@ const topics = [
     color: #ff6b6b;
   }
 
-  /* ===== SLIDE STACK MOCKUP ===== */
-  .slide-stack {
-    position: relative;
-    width: 280px;
-    height: 200px;
-    margin-top: 32px;
-  }
-
-  .slide-card {
-    position: absolute;
-    width: 240px;
-    height: 160px;
-    border-radius: 8px;
-    background: var(--white);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-  }
-
-  .slide-card--front {
-    z-index: 3;
-    bottom: 0;
-    left: 0;
-  }
-
-  .slide-card--back1 {
-    z-index: 2;
-    bottom: 12px;
-    left: 18px;
-    transform: rotate(2deg);
-  }
-
-  .slide-card--back2 {
-    z-index: 1;
-    bottom: 22px;
-    left: 34px;
-    transform: rotate(4deg);
-  }
-
-  .slide-card-inner {
-    padding: 16px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-  }
-
-  .slide-card-inner--blurred {
-    filter: blur(3px);
-  }
-
-  .slide-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 58, 58, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    filter: blur(0);
-    z-index: 5;
-  }
-
-  .slide-overlay span {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    background: var(--teal-dark);
-    padding: 6px 14px;
-  }
-
-  .slide-card-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-
-  .slide-avatar {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--teal-light);
-  }
-
-  .slide-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .slide-name {
-    width: 60px;
-    height: 6px;
-    background: var(--teal-dark);
-    border-radius: 3px;
-  }
-
-  .slide-date {
-    width: 40px;
-    height: 4px;
-    background: var(--teal-light);
-    border-radius: 2px;
-  }
-
-  .slide-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 12px;
-    flex: 1;
-    padding-bottom: 8px;
-  }
-
-  .slide-bar {
-    width: 100%;
-    border-radius: 3px 3px 0 0;
-  }
-
-  .slide-bar--tall {
-    height: 70%;
-    background: var(--gold);
-  }
-
-  .slide-bar--mid {
-    height: 50%;
-    background: var(--teal-mid);
-  }
-
-  .slide-bar--short {
-    height: 30%;
-    background: var(--teal-light);
-  }
-
-  .slide-card-label {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--teal-light);
-    text-transform: uppercase;
-    text-align: center;
-  }
 
   /* ===== TOPICS ===== */
   .topics {
@@ -933,17 +840,6 @@ const topics = [
     background-color: var(--gold);
     padding: 96px 0;
     position: relative;
-    overflow: hidden;
-  }
-
-  .host-teal-diagonal {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 35%;
-    height: 100%;
-    background-color: var(--teal-dark);
-    clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
   }
 
   .host-grid {
@@ -1140,116 +1036,6 @@ const topics = [
     background-color: var(--gold-hover);
   }
 
-  /* ===== FINAL CTA ===== */
-  .final-cta {
-    position: relative;
-    padding: 96px 0;
-    overflow: hidden;
-  }
-
-  .cta-gold-bg {
-    position: absolute;
-    inset: 0;
-    background-color: var(--gold);
-  }
-
-  .cta-teal-diagonal {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 25%;
-    height: 100%;
-    background-color: var(--teal-dark);
-    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
-  }
-
-  .cta-content {
-    position: relative;
-    z-index: 10;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 24px;
-    text-align: center;
-  }
-
-  .cta-headline {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 6vw, 64px);
-    line-height: 1;
-    margin-bottom: 24px;
-  }
-
-  .cta-headline-gold {
-    display: inline-block;
-    background-color: var(--gold);
-    color: var(--teal-dark);
-    padding: 8px 16px;
-  }
-
-  .cta-headline-teal {
-    display: inline-block;
-    background-color: var(--teal-dark);
-    color: var(--white);
-    padding: 8px 16px;
-    margin-top: 8px;
-  }
-
-  .cta-desc {
-    font-size: 17px;
-    color: var(--teal-dark);
-    max-width: 480px;
-    margin: 0 auto 40px;
-    line-height: 1.6;
-    background-color: rgba(245, 197, 24, 0.9);
-    padding: 16px;
-    display: inline-block;
-  }
-
-  .cta-form {
-    display: flex;
-    max-width: 480px;
-    margin: 0 auto;
-    background-color: var(--teal-dark);
-    padding: 8px;
-  }
-
-  .cta-input {
-    flex: 1;
-    padding: 16px 24px;
-    background-color: transparent;
-    border: none;
-    color: var(--white);
-    font-size: 16px;
-    font-family: inherit;
-    outline: none;
-  }
-
-  .cta-input::placeholder {
-    color: var(--teal-light);
-  }
-
-  .cta-button {
-    padding: 16px 40px;
-    background-color: var(--gold);
-    color: var(--teal-dark);
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 0.1em;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background-color 0.3s ease;
-  }
-
-  .cta-message {
-    text-align: center;
-    max-width: 480px;
-    margin: 12px auto 0;
-  }
-
-  .cta-button:hover {
-    background-color: var(--gold-hover);
-  }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
@@ -1281,16 +1067,17 @@ const topics = [
       display: none;
     }
     
-    .signup-section-inner {
-      flex-direction: column;
+    .signup-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
     }
 
     .signup-form {
       flex-direction: column;
     }
 
-    .slide-stack {
-      margin: 32px auto 0;
+    .signup-description {
+      max-width: 100%;
     }
 
     .topics-grid {
@@ -1314,10 +1101,6 @@ const topics = [
       justify-content: center;
     }
     
-    .host-teal-diagonal {
-      display: none;
-    }
-    
     .form-row {
       grid-template-columns: 1fr;
     }
@@ -1326,13 +1109,6 @@ const topics = [
       width: 100%;
     }
     
-    .cta-form {
-      flex-direction: column;
-    }
-    
-    .cta-teal-diagonal {
-      display: none;
-    }
   }
 
   /* ===== ANIMATED GRID PATTERNS ===== */
@@ -1347,20 +1123,6 @@ const topics = [
     pointer-events: none;
   }
 
-  .signup-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(122, 181, 181, 0.06) 1px, transparent 1px);
-    background-size: 28px 28px;
-    animation: grid-drift 30s linear infinite;
-    pointer-events: none;
-  }
-
-  .signup-section {
-    position: relative;
-    overflow: hidden;
-  }
 
   .contact::before {
     content: '';
