@@ -223,26 +223,31 @@ public/
 
 ## Session Memory
 
-**Last Updated:** 2026-02-09
+**Last Updated:** 2026-02-13
 
 ### Recent Accomplishments
 
-- Gordo Framework setup (this session)
-- Site exists with landing page, topic cards, host bio, signup form, contact form
+- Gordo Framework setup (Session 0)
+- Redesigned signup section with two-column layout and preview items (Session 1)
+- Removed duplicate final CTA section (Session 1)
+- Simplified host section to solid gold background (Session 1)
+- Site page flow: Hero → Topics → Signup → Host → Contact
 
 ### Current Focus
 
-- Launch day: domain setup, site publishing, first guest outreach
+- Domain setup and Cloudflare deployment
+- First guest outreach
 
 ### Known Issues
 
 - Site is single-page — may need expansion as episodes are published
 - No episode pages yet (pre-first-episode)
+- KV namespace ID placeholder in wrangler.toml needs real value before deploy
 
 ### Next Steps
 
-- Lock in domain
-- Deploy site to production
+- Connect domain
+- Deploy site to production (set up KV namespace, Resend API key)
 - Begin first round of guest outreach
 - Plan episode 1 topic and research
 
