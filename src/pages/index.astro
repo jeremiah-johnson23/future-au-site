@@ -44,25 +44,13 @@ const topics = [
 <BaseLayout title="Home">
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-teal-diagonal"></div>
-
-    <!-- Floating particles -->
-    <div class="hero-particles" aria-hidden="true">
-      <div class="particle particle--1"></div>
-      <div class="particle particle--2"></div>
-      <div class="particle particle--3"></div>
-      <div class="particle particle--4"></div>
-      <div class="particle particle--5"></div>
-      <div class="particle particle--6"></div>
-      <div class="particle particle--7"></div>
-      <div class="particle particle--8"></div>
-    </div>
-
+    <div class="hero-gold-diagonal"></div>
+    
     <!-- Australia graphic on gold side -->
     <div class="hero-australia">
-      <video src="/videos/hero-circuit.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
+      <img src="/images/logo-green.png" alt="" aria-hidden="true" />
     </div>
-
+    
     <div class="hero-content">
       <!-- Launch badge -->
       <div class="launch-badge">
@@ -354,16 +342,16 @@ const topics = [
   .hero {
     position: relative;
     overflow: hidden;
-    background-color: var(--gold);
+    background-color: var(--teal-dark);
   }
 
-  .hero-teal-diagonal {
+  .hero-gold-diagonal {
     position: absolute;
     top: 0;
     right: 0;
     width: 55%;
     height: 100%;
-    background-color: var(--teal-dark);
+    background-color: var(--gold);
     clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
   }
 
@@ -379,11 +367,10 @@ const topics = [
     justify-content: center;
   }
 
-  .hero-australia video {
+  .hero-australia img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    mix-blend-mode: screen;
   }
 
   .hero-content {
@@ -404,14 +391,14 @@ const topics = [
   .launch-line {
     width: 48px;
     height: 4px;
-    background-color: var(--teal-dark);
+    background-color: var(--gold);
   }
 
   .launch-text {
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: var(--teal-dark);
+    color: var(--gold);
   }
 
   .hero-headline {
@@ -423,7 +410,7 @@ const topics = [
     display: block;
     font-size: clamp(56px, 11vw, 130px);
     line-height: 0.9;
-    color: var(--teal-dark);
+    color: var(--white);
   }
 
   .headline-with-badge {
@@ -440,14 +427,11 @@ const topics = [
     margin-left: 16px;
     transform: rotate(-2deg);
     font-size: 0.45em !important;
-    position: relative;
-    z-index: 10;
-    border: 3px solid var(--teal-dark);
   }
 
   .hero-tagline {
     font-size: 20px;
-    color: var(--teal-dark);
+    color: var(--white);
     max-width: 400px;
     line-height: 1.6;
     margin-bottom: 0;
@@ -861,18 +845,16 @@ const topics = [
     height: 260px;
     object-fit: cover;
     display: block;
-    position: relative;
-    z-index: 2;
   }
 
   .host-image-frame {
     position: absolute;
-    top: -12px;
-    left: -12px;
-    right: -12px;
     bottom: -12px;
+    right: -12px;
+    width: 100%;
+    height: 100%;
     border: 4px solid var(--teal-dark);
-    z-index: 1;
+    z-index: -1;
   }
 
   .host-content {
@@ -1055,7 +1037,7 @@ const topics = [
   }
 
   @media (max-width: 768px) {
-    .hero-teal-diagonal {
+    .hero-gold-diagonal {
       width: 100%;
       height: 40%;
       top: auto;
@@ -1109,107 +1091,5 @@ const topics = [
       width: 100%;
     }
     
-  }
-
-  /* ===== ANIMATED GRID PATTERNS ===== */
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(10, 58, 58, 0.12) 1px, transparent 1px);
-    background-size: 32px 32px;
-    animation: grid-drift 20s linear infinite;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-
-  .contact::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(122, 181, 181, 0.06) 1px, transparent 1px);
-    background-size: 28px 28px;
-    animation: grid-drift 35s linear infinite reverse;
-    pointer-events: none;
-  }
-
-  .contact {
-    position: relative;
-    overflow: hidden;
-  }
-
-  @keyframes grid-drift {
-    from { background-position: 0 0; }
-    to { background-position: 32px 32px; }
-  }
-
-
-  /* ===== FLOATING PARTICLES ===== */
-  .hero-particles {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .particle {
-    position: absolute;
-    border-radius: 50%;
-    animation: float-up linear infinite;
-  }
-
-  .particle--1 { width: 3px; height: 3px; background: var(--teal-dark); left: 8%; bottom: -10px; animation-duration: 9s; animation-delay: 0s; }
-  .particle--2 { width: 4px; height: 4px; background: var(--teal-mid); left: 22%; bottom: -10px; animation-duration: 13s; animation-delay: 2s; }
-  .particle--3 { width: 2px; height: 2px; background: var(--teal-dark); left: 38%; bottom: -10px; animation-duration: 11s; animation-delay: 4s; }
-  .particle--4 { width: 5px; height: 5px; background: rgba(10, 58, 58, 0.4); left: 52%; bottom: -10px; animation-duration: 15s; animation-delay: 1s; }
-  .particle--5 { width: 3px; height: 3px; background: var(--teal-mid); left: 68%; bottom: -10px; animation-duration: 10s; animation-delay: 3s; }
-  .particle--6 { width: 2px; height: 2px; background: var(--teal-dark); left: 82%; bottom: -10px; animation-duration: 12s; animation-delay: 5.5s; }
-  .particle--7 { width: 4px; height: 4px; background: rgba(21, 107, 107, 0.4); left: 15%; bottom: -10px; animation-duration: 14s; animation-delay: 7s; }
-  .particle--8 { width: 3px; height: 3px; background: var(--teal-dark); left: 75%; bottom: -10px; animation-duration: 8s; animation-delay: 6s; }
-
-  @keyframes float-up {
-    0% { transform: translateY(0) translateX(0); opacity: 0; }
-    5% { opacity: 0.7; }
-    85% { opacity: 0.7; }
-    100% { transform: translateY(calc(-100vh - 20px)) translateX(40px); opacity: 0; }
-  }
-
-  /* ===== TOPICS ANIMATED ACCENTS ===== */
-  .topics::after {
-    content: '';
-    position: absolute;
-    top: 20%;
-    right: -60px;
-    width: 120px;
-    height: 120px;
-    border: 2px solid rgba(10, 58, 58, 0.06);
-    border-radius: 50%;
-    animation: drift-rotate 20s linear infinite;
-    pointer-events: none;
-  }
-
-  @keyframes drift-rotate {
-    0% { transform: rotate(0deg) translateX(0); }
-    50% { transform: rotate(180deg) translateX(20px); }
-    100% { transform: rotate(360deg) translateX(0); }
-  }
-
-  /* ===== REDUCED MOTION ===== */
-  @media (prefers-reduced-motion: reduce) {
-    .orbit, .pulse-dot, .particle, .circuit-glow,
-    .hero::before, .signup-section::before, .contact::before,
-    .topics::after {
-      animation: none;
-    }
-    .particle { display: none; }
-  }
-
-  /* ===== MOBILE ANIMATION ADJUSTMENTS ===== */
-  @media (max-width: 768px) {
-    .hero-particles .particle:nth-child(n+6) {
-      display: none;
-    }
   }
 </style>
