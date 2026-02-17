@@ -223,7 +223,7 @@ public/
 
 ## Session Memory
 
-**Last Updated:** 2026-02-13
+**Last Updated:** 2026-02-17
 
 ### Recent Accomplishments
 
@@ -232,22 +232,34 @@ public/
 - Removed duplicate final CTA section (Session 1)
 - Simplified host section to solid gold background (Session 1)
 - Site page flow: Hero → Topics → Signup → Host → Contact
+- **Production deployment to Cloudflare Workers (Session 2)**
+- Connected futureaupodcast.com.au domain (DNS via Cloudflare, registered at VentraIP)
+- Created KV namespace (SUBSCRIBERS_KV) and set Resend API secret
+- Restored animated circuit board hero + single signup layout
+- Both signup and contact forms tested and working in production
 
 ### Current Focus
 
-- Domain setup and Cloudflare deployment
 - First guest outreach
+- Episode 1 planning
+
+### Deployment
+
+- **Live:** https://futureaupodcast.com.au (+ www)
+- **Workers.dev:** https://future-au-site.simon-ae3.workers.dev
+- **Deploy method:** `npm run build && CLOUDFLARE_ACCOUNT_ID=ae31ce47e6b9f00504a635696cd33142 npx wrangler deploy`
+- **Git auto-deploy:** Disconnected — using manual wrangler deploy from CLI
+- **KV namespace ID:** 679ce65897de4813927e8719a0972478
+- **Secrets:** RESEND_API_KEY set via wrangler
+- **DNS:** Cloudflare nameservers (transferred from VentraIP)
 
 ### Known Issues
 
 - Site is single-page — may need expansion as episodes are published
 - No episode pages yet (pre-first-episode)
-- KV namespace ID placeholder in wrangler.toml needs real value before deploy
 
 ### Next Steps
 
-- Connect domain
-- Deploy site to production (set up KV namespace, Resend API key)
 - Begin first round of guest outreach
 - Plan episode 1 topic and research
 
