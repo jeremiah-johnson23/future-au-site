@@ -2,6 +2,12 @@ name = "future-au-site"
 main = "dist/_worker.js/index.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+routes = [
+  { pattern = "futureaupodcast.com.au/*", zone_name = "futureaupodcast.com.au" },
+  { pattern = "www.futureaupodcast.com.au/*", zone_name = "futureaupodcast.com.au" }
+]
 
 [assets]
 directory = "./dist"
