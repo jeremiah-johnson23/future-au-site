@@ -1,16 +1,17 @@
 name = "future-au-site"
+main = "dist/_worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./dist"
 
 [vars]
 CONTACT_EMAIL = "hello@futureaupodcast.com.au"
 
 [[kv_namespaces]]
 binding = "SUBSCRIBERS_KV"
-id = "PLACEHOLDER_KV_ID"
-
-# After creating the KV namespace, replace PLACEHOLDER_KV_ID:
-# wrangler kv:namespace create "SUBSCRIBERS_KV"
+id = "679ce65897de4813927e8719a0972478"
 
 # Set RESEND_API_KEY as a secret:
 # wrangler secret put RESEND_API_KEY
