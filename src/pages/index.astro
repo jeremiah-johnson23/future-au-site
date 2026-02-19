@@ -100,15 +100,9 @@ const topics = [
       
       <div class="topics-grid">
         {topics.map((topic, index) => (
-          <article class={`topic-card ${index === 0 ? 'topic-card--large' : ''}`}>
+          <article class="topic-card">
             <div class="topic-image-container">
               <img src={topic.image} alt={topic.question} class="topic-image" />
-              <div class="topic-number-badge">
-                <span>{topic.number}</span>
-              </div>
-              <div class="topic-category-badge">
-                <span>{topic.category}</span>
-              </div>
               <div class="topic-gradient"></div>
               <div class="topic-content">
                 <h3 class="topic-title">{topic.question}</h3>
@@ -736,18 +730,9 @@ const topics = [
     cursor: pointer;
   }
 
-  .topic-card--large {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-
   .topic-image-container {
     position: relative;
     padding-top: 100%;
-  }
-
-  .topic-card--large .topic-image-container {
-    padding-top: 80%;
   }
 
   .topic-image {
@@ -761,38 +746,6 @@ const topics = [
 
   .topic-card:hover .topic-image {
     transform: scale(1.05);
-  }
-
-  .topic-number-badge {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    background-color: var(--gold);
-    padding: 4px 12px;
-    z-index: 20;
-  }
-
-  .topic-number-badge span {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--teal-dark);
-  }
-
-  .topic-category-badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background-color: rgba(10, 58, 58, 0.9);
-    padding: 4px 12px;
-    z-index: 20;
-  }
-
-  .topic-category-badge span {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: var(--white);
   }
 
   .topic-gradient {
@@ -816,10 +769,6 @@ const topics = [
     line-height: 1.3;
     font-size: 17px;
     transition: color 0.3s ease;
-  }
-
-  .topic-card--large .topic-title {
-    font-size: 26px;
   }
 
   .topic-card:hover .topic-title {
@@ -1043,11 +992,6 @@ const topics = [
       grid-template-columns: repeat(2, 1fr);
     }
     
-    .topic-card--large {
-      grid-column: span 2;
-      grid-row: span 1;
-    }
-    
     .contact-grid {
       grid-template-columns: 1fr;
       gap: 48px;
@@ -1084,9 +1028,6 @@ const topics = [
       grid-template-columns: 1fr;
     }
     
-    .topic-card--large {
-      grid-column: span 1;
-    }
     
     .host-grid {
       flex-direction: column;
