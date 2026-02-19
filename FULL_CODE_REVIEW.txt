@@ -1,3 +1,421 @@
+================================================================================
+FUTURE AU - FULL SITE CODE
+futureaupodcast.com.au
+Generated: 2026-02-19
+================================================================================
+
+STACK: Astro 5 + Cloudflare Workers + Resend (email) + KV (subscribers)
+FONTS: Space Grotesk (body), Bebas Neue (headlines)
+PALETTE: #0a3a3a (teal-dark), #0d4a4a (teal), #156b6b (teal-mid),
+         #7ab5b5 (teal-light), #f5c518 (gold), #f5f3e8 (cream)
+
+================================================================================
+FILE: package.json
+================================================================================
+
+{
+  "name": "future-au-site",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
+    "astro": "^5.17.1",
+    "resend": "^6.9.2"
+  }
+}
+
+================================================================================
+FILE: astro.config.mjs
+================================================================================
+
+import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
+
+export default defineConfig({
+  output: 'server',
+  adapter: cloudflare(),
+});
+
+================================================================================
+FILE: src/layouts/BaseLayout.astro
+================================================================================
+
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = "Bold conversations with the people reimagining Australia's future.", ogImage = "/images/hero.png" } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://futureaupodcast.com.au');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:title" content={`${title} | Future AU`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Future AU" />
+    <meta property="og:locale" content="en_AU" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Future AU`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{title} | Future AU</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <a href="/" class="nav-logo">
+          FUTURE<span class="nav-logo-badge">AU</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a href="#topics" class="nav-link">TOPICS</a>
+          <a href="#host" class="nav-link">HOST</a>
+          <a href="#contact" class="nav-link">CONTACT</a>
+          <a href="#signup" class="nav-cta">NOTIFY ME</a>
+        </div>
+        <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <a href="/" class="footer-logo">
+            FUTURE<span class="footer-logo-badge">AU</span>
+          </a>
+          <nav class="footer-nav">
+            <a href="#topics" class="footer-link">Topics</a>
+            <a href="#host" class="footer-link">Host</a>
+            <a href="#contact" class="footer-link">Contact</a>
+          </nav>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/in/simon-j-murphy/" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            &copy; {new Date().getFullYear()} Future AU. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('nav-toggle');
+      const links = document.getElementById('nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          links.classList.toggle('nav-links--open');
+          const menuIcon = toggle.querySelector('.icon-menu') as HTMLElement;
+          const closeIcon = toggle.querySelector('.icon-close') as HTMLElement;
+          if (menuIcon && closeIcon) {
+            menuIcon.style.display = expanded ? '' : 'none';
+            closeIcon.style.display = expanded ? 'none' : '';
+          }
+        });
+
+        links.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            links.classList.remove('nav-links--open');
+            toggle.setAttribute('aria-expanded', 'false');
+            const menuIcon = toggle.querySelector('.icon-menu') as HTMLElement;
+            const closeIcon = toggle.querySelector('.icon-close') as HTMLElement;
+            if (menuIcon && closeIcon) {
+              menuIcon.style.display = '';
+              closeIcon.style.display = 'none';
+            }
+          });
+        });
+      }
+    </script>
+
+    <style is:global>
+      /* ===== RESET & BASE ===== */
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        background-color: #0a3a3a;
+        color: #ffffff;
+        min-height: 100vh;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      /* ===== HEADER ===== */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background-color: #0a3a3a;
+        border-bottom: 1px solid #156b6b;
+      }
+
+      .nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 28px;
+        letter-spacing: 0.05em;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-logo-badge {
+        background-color: #f5c518;
+        color: #0a3a3a;
+        padding: 2px 8px;
+        margin-left: 4px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .nav-link {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        color: #ffffff;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #f5c518;
+      }
+
+      .nav-cta {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        background-color: #f5c518;
+        color: #0a3a3a;
+        padding: 12px 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      .nav-cta:hover {
+        background-color: #f7d04c;
+      }
+
+      .nav-mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background-color: #0a3a3a;
+          border-bottom: 1px solid #156b6b;
+          flex-direction: column;
+          padding: 16px 24px 24px;
+          gap: 0;
+        }
+
+        .nav-links--open {
+          display: flex;
+        }
+
+        .nav-links .nav-link,
+        .nav-links .nav-cta {
+          padding: 12px 0;
+          display: block;
+          text-align: left;
+        }
+
+        .nav-links .nav-cta {
+          margin-top: 8px;
+          padding: 12px 20px;
+          text-align: center;
+        }
+
+        .nav-mobile-toggle {
+          display: block;
+        }
+      }
+
+      /* ===== FOOTER ===== */
+      .footer {
+        background-color: #0a3a3a;
+        border-top: 4px solid #f5c518;
+        padding: 48px 0 32px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .footer-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 32px;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+
+      .footer-logo {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 24px;
+        letter-spacing: 0.05em;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-logo-badge {
+        background-color: #f5c518;
+        color: #0a3a3a;
+        padding: 2px 8px;
+        margin-left: 4px;
+      }
+
+      .footer-nav {
+        display: flex;
+        gap: 24px;
+      }
+
+      .footer-link {
+        font-size: 14px;
+        font-weight: 500;
+        color: #7ab5b5;
+        transition: color 0.3s ease;
+      }
+
+      .footer-link:hover {
+        color: #f5c518;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 16px;
+      }
+
+      .footer-social-link {
+        color: #7ab5b5;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-social-link:hover {
+        color: #f5c518;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #156b6b;
+        padding-top: 24px;
+      }
+
+      .footer-copyright {
+        font-size: 14px;
+        font-weight: 500;
+        color: #7ab5b5;
+      }
+
+      @media (max-width: 768px) {
+        .footer-top {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .footer-bottom {
+          text-align: center;
+        }
+      }
+    </style>
+  </body>
+</html>
+
+================================================================================
+FILE: src/pages/index.astro
+================================================================================
+
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -57,7 +475,7 @@ const topics = [
         <span class="launch-line"></span>
         <span class="launch-text">FIRST EPISODE COMING SOON</span>
       </div>
-      
+
       <!-- Main headline -->
       <h1 class="hero-headline">
         <span>BUILDING</span>
@@ -67,12 +485,12 @@ const topics = [
           <span class="badge-2">2.0</span>
         </span>
       </h1>
-      
+
       <!-- Tagline -->
       <p class="hero-tagline">
         A podcast exploring Australia's biggest questions with the people closest to the answers.
       </p>
-      
+
     </div>
   </section>
 
@@ -85,7 +503,7 @@ const topics = [
           <h2 class="section-title">WHAT WE'RE<br/>EXPLORING</h2>
         </div>
       </div>
-      
+
       <div class="topics-grid">
         {topics.map((topic, index) => (
           <article class="topic-card">
@@ -175,7 +593,7 @@ const topics = [
           <img src="/images/headshot.png" alt="Simon Murphy" class="host-image" />
           <div class="host-image-frame"></div>
         </div>
-        
+
         <div class="host-content">
           <div class="host-label-row">
             <span class="host-line"></span>
@@ -183,7 +601,7 @@ const topics = [
           </div>
           <h2 class="host-name">SIMON<br/>MURPHY</h2>
           <p class="host-bio">
-            Growth strategist, AI-native operator, and chronic overthinker about Australia's potential. Future AU exists to find the people with bold ideas about where this country is heading and put them on the record.
+            Founder, strategist, and someone who thinks Australia punches below its weight. Future AU exists to find the people with bold ideas about where this country could go, and give them a microphone.
           </p>
           <div class="host-links">
             <a href="https://www.linkedin.com/in/simon-j-murphy/" target="_blank" rel="noopener" class="host-link">LINKEDIN →</a>
@@ -203,7 +621,7 @@ const topics = [
             Got a topic we should cover? Want to sponsor? Know someone we should talk to? Let's hear it.
           </p>
         </div>
-        
+
         <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div class="form-group">
@@ -443,9 +861,10 @@ const topics = [
 
   /* ===== FORMAT SECTION ===== */
   .format-section {
-    background-color: var(--teal);
-    padding: 96px 24px;
+    background-color: var(--cream);
+    padding: 80px 24px;
     text-align: center;
+    border-top: 1px solid rgba(10, 58, 58, 0.1);
   }
 
   .format-content {
@@ -457,34 +876,23 @@ const topics = [
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: var(--gold);
+    color: var(--teal-mid);
     margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .format-label::after {
-    content: '';
-    flex: 0 0 60px;
-    height: 2px;
-    background-color: var(--gold);
-    opacity: 0.4;
   }
 
   .format-headline {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(32px, 5vw, 48px);
     line-height: 1;
-    color: var(--white);
+    color: var(--teal-dark);
     margin-bottom: 24px;
   }
 
   .format-body {
     font-size: 18px;
     line-height: 1.7;
-    color: var(--cream);
+    color: var(--teal-dark);
+    opacity: 0.85;
   }
 
   /* ===== SIGNUP SECTION ===== */
@@ -757,25 +1165,6 @@ const topics = [
     max-width: 350px;
   }
 
-  .topics::after {
-    content: '';
-    position: absolute;
-    top: 20%;
-    right: -60px;
-    width: 120px;
-    height: 120px;
-    border: 2px solid rgba(10, 58, 58, 0.06);
-    border-radius: 50%;
-    animation: drift-rotate 20s linear infinite;
-    pointer-events: none;
-  }
-
-  @keyframes drift-rotate {
-    0% { transform: rotate(0deg) translateX(0); }
-    50% { transform: rotate(180deg) translateX(20px); }
-    100% { transform: rotate(360deg) translateX(0); }
-  }
-
   .topics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -952,23 +1341,6 @@ const topics = [
   .contact {
     background-color: var(--teal-dark);
     padding: 96px 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(122, 181, 181, 0.06) 1px, transparent 1px);
-    background-size: 28px 28px;
-    animation: grid-drift 35s linear infinite reverse;
-    pointer-events: none;
-  }
-
-  @keyframes grid-drift {
-    from { background-position: 0 0; }
-    to { background-position: 32px 32px; }
   }
 
   .contact-grid {
@@ -1066,12 +1438,6 @@ const topics = [
 
 
   /* ===== RESPONSIVE ===== */
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .hero-content {
-      max-width: 55%;
-    }
-  }
-
   @media (max-width: 1024px) {
     .topics-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -1091,11 +1457,11 @@ const topics = [
       bottom: 0;
       clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
     }
-    
+
     .hero-australia {
       display: none;
     }
-    
+
     .signup-grid {
       grid-template-columns: 1fr;
       gap: 48px;
@@ -1112,29 +1478,69 @@ const topics = [
     .topics-grid {
       grid-template-columns: 1fr;
     }
-    
-    
+
+
     .host-grid {
       flex-direction: column;
       text-align: center;
     }
-    
+
     .host-label-row {
       justify-content: center;
     }
-    
+
     .host-links {
       justify-content: center;
     }
-    
+
     .form-row {
       grid-template-columns: 1fr;
     }
-    
+
     .form-submit {
       width: 100%;
     }
-    
+
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(122, 181, 181, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    animation: grid-drift 35s linear infinite reverse;
+    pointer-events: none;
+  }
+
+  .contact {
+    position: relative;
+    overflow: hidden;
+  }
+
+  @keyframes grid-drift {
+    from { background-position: 0 0; }
+    to { background-position: 32px 32px; }
+  }
+
+  /* ===== TOPICS ANIMATED ACCENTS ===== */
+  .topics::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -60px;
+    width: 120px;
+    height: 120px;
+    border: 2px solid rgba(10, 58, 58, 0.06);
+    border-radius: 50%;
+    animation: drift-rotate 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes drift-rotate {
+    0% { transform: rotate(0deg) translateX(0); }
+    50% { transform: rotate(180deg) translateX(20px); }
+    100% { transform: rotate(360deg) translateX(0); }
   }
 
   /* ===== REDUCED MOTION ===== */
@@ -1145,3 +1551,152 @@ const topics = [
     }
   }
 </style>
+
+================================================================================
+FILE: src/pages/api/subscribe.ts
+================================================================================
+
+import type { APIRoute } from 'astro';
+
+export const POST: APIRoute = async ({ request, locals }) => {
+  const runtime = (locals as App.Locals).runtime;
+  const kv = runtime.env.SUBSCRIBERS_KV;
+
+  try {
+    const data = await request.formData();
+
+    // Honeypot check
+    if (data.get('website')) {
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const email = data.get('email')?.toString().trim().toLowerCase();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return new Response(JSON.stringify({ error: 'Valid email required.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const existing = await kv.get(`sub:${email}`);
+    if (existing) {
+      return new Response(JSON.stringify({ ok: true, message: "You're already on the list." }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    await kv.put(`sub:${email}`, JSON.stringify({
+      email,
+      subscribedAt: new Date().toISOString(),
+    }));
+
+    return new Response(JSON.stringify({ ok: true, message: "You're in. We'll be in touch." }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch {
+    return new Response(JSON.stringify({ error: 'Something went wrong. Try again.' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+};
+
+================================================================================
+FILE: src/pages/api/contact.ts
+================================================================================
+
+import type { APIRoute } from 'astro';
+import { Resend } from 'resend';
+
+export const POST: APIRoute = async ({ request, locals }) => {
+  const runtime = (locals as App.Locals).runtime;
+
+  try {
+    const data = await request.formData();
+
+    // Honeypot check
+    if (data.get('website')) {
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const name = data.get('name')?.toString().trim();
+    const email = data.get('email')?.toString().trim().toLowerCase();
+    const type = data.get('type')?.toString().trim();
+    const message = data.get('message')?.toString().trim();
+
+    if (!name || !email || !type || !message) {
+      return new Response(JSON.stringify({ error: 'All fields are required.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return new Response(JSON.stringify({ error: 'Valid email required.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const resend = new Resend(runtime.env.RESEND_API_KEY);
+    const contactEmail = runtime.env.CONTACT_EMAIL || 'hello@futureaupodcast.com.au';
+
+    await resend.emails.send({
+      from: `Future AU <noreply@futureaupodcast.com.au>`,
+      to: contactEmail,
+      replyTo: email,
+      subject: `[Future AU] ${type}: ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\nType: ${type}\n\n${message}`,
+    });
+
+    return new Response(JSON.stringify({ ok: true, message: 'Message sent. Thanks for reaching out.' }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch {
+    return new Response(JSON.stringify({ error: 'Something went wrong. Try again.' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+};
+
+================================================================================
+FILE: wrangler.toml
+================================================================================
+
+name = "future-au-site"
+main = "dist/_worker.js/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+assets = { directory = "./dist" }
+
+workers_dev = true
+
+[[routes]]
+pattern = "futureaupodcast.com.au/*"
+zone_name = "futureaupodcast.com.au"
+
+[[routes]]
+pattern = "www.futureaupodcast.com.au/*"
+zone_name = "futureaupodcast.com.au"
+
+[[kv_namespaces]]
+binding = "SUBSCRIBERS_KV"
+id = "679ce65897de4813927e8719a0972478"
+
+[vars]
+CONTACT_EMAIL = "hello@futureaupodcast.com.au"
+
+================================================================================
+END OF FILE
+================================================================================
