@@ -1,13 +1,16 @@
 ================================================================================
 FUTURE AU - FULL SITE CODE
 futureaupodcast.com.au
-Generated: 2026-02-19
+Generated: 2026-02-19 (updated)
 ================================================================================
 
 STACK: Astro 5 + Cloudflare Workers + Resend (email) + KV (subscribers)
 FONTS: Space Grotesk (body), Bebas Neue (headlines)
 PALETTE: #0a3a3a (teal-dark), #0d4a4a (teal), #156b6b (teal-mid),
          #7ab5b5 (teal-light), #f5c518 (gold), #f5f3e8 (cream)
+
+PAGE FLOW: Gold hero > Cream topics > Dark teal format > Dark teal signup >
+           Gold host > Dark teal contact > Dark teal footer
 
 ================================================================================
 FILE: package.json
@@ -601,7 +604,7 @@ const topics = [
           </div>
           <h2 class="host-name">SIMON<br/>MURPHY</h2>
           <p class="host-bio">
-            Founder, strategist, and someone who thinks Australia punches below its weight. Future AU exists to find the people with bold ideas about where this country could go, and give them a microphone.
+            Growth strategist, AI-native operator, and chronic overthinker about Australia's potential. Future AU exists to find the people with bold ideas about where this country is heading and put them on the record.
           </p>
           <div class="host-links">
             <a href="https://www.linkedin.com/in/simon-j-murphy/" target="_blank" rel="noopener" class="host-link">LINKEDIN →</a>
@@ -861,10 +864,9 @@ const topics = [
 
   /* ===== FORMAT SECTION ===== */
   .format-section {
-    background-color: var(--cream);
-    padding: 80px 24px;
+    background-color: var(--teal);
+    padding: 96px 24px;
     text-align: center;
-    border-top: 1px solid rgba(10, 58, 58, 0.1);
   }
 
   .format-content {
@@ -876,23 +878,34 @@ const topics = [
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: var(--teal-mid);
+    color: var(--gold);
     margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .format-label::after {
+    content: '';
+    flex: 0 0 60px;
+    height: 2px;
+    background-color: var(--gold);
+    opacity: 0.4;
   }
 
   .format-headline {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(32px, 5vw, 48px);
     line-height: 1;
-    color: var(--teal-dark);
+    color: var(--white);
     margin-bottom: 24px;
   }
 
   .format-body {
     font-size: 18px;
     line-height: 1.7;
-    color: var(--teal-dark);
-    opacity: 0.85;
+    color: var(--cream);
   }
 
   /* ===== SIGNUP SECTION ===== */
@@ -1165,6 +1178,25 @@ const topics = [
     max-width: 350px;
   }
 
+  .topics::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -60px;
+    width: 120px;
+    height: 120px;
+    border: 2px solid rgba(10, 58, 58, 0.06);
+    border-radius: 50%;
+    animation: drift-rotate 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes drift-rotate {
+    0% { transform: rotate(0deg) translateX(0); }
+    50% { transform: rotate(180deg) translateX(20px); }
+    100% { transform: rotate(360deg) translateX(0); }
+  }
+
   .topics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1341,6 +1373,23 @@ const topics = [
   .contact {
     background-color: var(--teal-dark);
     padding: 96px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(122, 181, 181, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    animation: grid-drift 35s linear infinite reverse;
+    pointer-events: none;
+  }
+
+  @keyframes grid-drift {
+    from { background-position: 0 0; }
+    to { background-position: 32px 32px; }
   }
 
   .contact-grid {
@@ -1438,6 +1487,12 @@ const topics = [
 
 
   /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .hero-content {
+      max-width: 55%;
+    }
+  }
+
   @media (max-width: 1024px) {
     .topics-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -1501,46 +1556,6 @@ const topics = [
       width: 100%;
     }
 
-  }
-
-  .contact::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(122, 181, 181, 0.06) 1px, transparent 1px);
-    background-size: 28px 28px;
-    animation: grid-drift 35s linear infinite reverse;
-    pointer-events: none;
-  }
-
-  .contact {
-    position: relative;
-    overflow: hidden;
-  }
-
-  @keyframes grid-drift {
-    from { background-position: 0 0; }
-    to { background-position: 32px 32px; }
-  }
-
-  /* ===== TOPICS ANIMATED ACCENTS ===== */
-  .topics::after {
-    content: '';
-    position: absolute;
-    top: 20%;
-    right: -60px;
-    width: 120px;
-    height: 120px;
-    border: 2px solid rgba(10, 58, 58, 0.06);
-    border-radius: 50%;
-    animation: drift-rotate 20s linear infinite;
-    pointer-events: none;
-  }
-
-  @keyframes drift-rotate {
-    0% { transform: rotate(0deg) translateX(0); }
-    50% { transform: rotate(180deg) translateX(20px); }
-    100% { transform: rotate(360deg) translateX(0); }
   }
 
   /* ===== REDUCED MOTION ===== */
@@ -1678,24 +1693,25 @@ name = "future-au-site"
 main = "dist/_worker.js/index.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
-assets = { directory = "./dist" }
-
 workers_dev = true
 
-[[routes]]
-pattern = "futureaupodcast.com.au/*"
-zone_name = "futureaupodcast.com.au"
+routes = [
+  { pattern = "futureaupodcast.com.au/*", zone_name = "futureaupodcast.com.au" },
+  { pattern = "www.futureaupodcast.com.au/*", zone_name = "futureaupodcast.com.au" }
+]
 
-[[routes]]
-pattern = "www.futureaupodcast.com.au/*"
-zone_name = "futureaupodcast.com.au"
+[assets]
+directory = "./dist"
+
+[vars]
+CONTACT_EMAIL = "hello@futureaupodcast.com.au"
 
 [[kv_namespaces]]
 binding = "SUBSCRIBERS_KV"
 id = "679ce65897de4813927e8719a0972478"
 
-[vars]
-CONTACT_EMAIL = "hello@futureaupodcast.com.au"
+# Set RESEND_API_KEY as a secret:
+# wrangler secret put RESEND_API_KEY
 
 ================================================================================
 END OF FILE
