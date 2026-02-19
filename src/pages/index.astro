@@ -46,28 +46,16 @@ const topics = [
   <section class="hero">
     <div class="hero-teal-diagonal"></div>
 
-    <!-- Floating particles -->
-    <div class="hero-particles" aria-hidden="true">
-      <div class="particle particle--1"></div>
-      <div class="particle particle--2"></div>
-      <div class="particle particle--3"></div>
-      <div class="particle particle--4"></div>
-      <div class="particle particle--5"></div>
-      <div class="particle particle--6"></div>
-      <div class="particle particle--7"></div>
-      <div class="particle particle--8"></div>
-    </div>
-
-    <!-- Australia graphic on gold side -->
+    <!-- Australia circuit board graphic on teal side -->
     <div class="hero-australia">
-      <video src="/videos/hero-circuit.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
+      <img src="/images/hero-circuit.png" alt="" aria-hidden="true" />
     </div>
 
     <div class="hero-content">
       <!-- Launch badge -->
       <div class="launch-badge">
         <span class="launch-line"></span>
-        <span class="launch-text">LAUNCHING 2026</span>
+        <span class="launch-text">FIRST EPISODE COMING SOON</span>
       </div>
       
       <!-- Main headline -->
@@ -82,7 +70,7 @@ const topics = [
       
       <!-- Tagline -->
       <p class="hero-tagline">
-        Bold conversations with the people reimagining Australia's future.
+        A podcast exploring Australia's biggest questions with the people closest to the answers.
       </p>
       
     </div>
@@ -115,6 +103,15 @@ const topics = [
     </div>
   </section>
 
+  <!-- Format Section -->
+  <section class="format-section">
+    <div class="format-content">
+      <div class="format-label">THE FORMAT</div>
+      <h2 class="format-headline">Bold conversations with the people reimagining Australia's future.</h2>
+      <p class="format-body">Each episode pairs one expert with one big question about Australia's future. The conversation is built on original research, not surface-level takes. New episodes drop monthly.</p>
+    </div>
+  </section>
+
   <!-- Signup Section -->
   <section class="signup-section">
     <div class="signup-grid">
@@ -123,7 +120,7 @@ const topics = [
       <div class="signup-copy">
         <div class="signup-label">FREE WITH EVERY EPISODE</div>
         <h2 class="signup-headline">
-          THE RESEARCH<br>
+          GET THE RESEARCH<br>
           THAT BUILT THE<br>
           <span class="gold">CONVERSATION.</span>
         </h2>
@@ -190,7 +187,6 @@ const topics = [
           </p>
           <div class="host-links">
             <a href="https://www.linkedin.com/in/simon-j-murphy/" target="_blank" rel="noopener" class="host-link">LINKEDIN →</a>
-            <a href="https://extractingideas.substack.com/" target="_blank" rel="noopener" class="host-link">SUBSTACK →</a>
           </div>
         </div>
       </div>
@@ -363,21 +359,19 @@ const topics = [
 
   .hero-australia {
     position: absolute;
-    top: 140px;
-    right: 0;
-    width: 45%;
-    bottom: 80px;
-    opacity: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 0;
+    right: -5%;
+    width: 65%;
+    height: 100%;
+    overflow: hidden;
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
   }
 
-  .hero-australia video {
+  .hero-australia img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    mix-blend-mode: screen;
+    object-fit: cover;
+    object-position: center 40%;
   }
 
   .hero-content {
@@ -445,6 +439,42 @@ const topics = [
     max-width: 400px;
     line-height: 1.6;
     margin-bottom: 0;
+  }
+
+  /* ===== FORMAT SECTION ===== */
+  .format-section {
+    background-color: var(--cream);
+    padding: 80px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(10, 58, 58, 0.1);
+  }
+
+  .format-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .format-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--teal-mid);
+    margin-bottom: 24px;
+  }
+
+  .format-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1;
+    color: var(--teal-dark);
+    margin-bottom: 24px;
+  }
+
+  .format-body {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--teal-dark);
+    opacity: 0.85;
   }
 
   /* ===== SIGNUP SECTION ===== */
@@ -809,9 +839,11 @@ const topics = [
     width: 260px;
     height: 260px;
     object-fit: cover;
+    object-position: center bottom;
     display: block;
     position: relative;
     z-index: 2;
+    background-color: var(--teal-dark);
   }
 
   .host-image-frame {
@@ -821,6 +853,7 @@ const topics = [
     right: -12px;
     bottom: -12px;
     border: 4px solid var(--teal-dark);
+    background-color: var(--teal-dark);
     z-index: 1;
   }
 
@@ -1052,19 +1085,6 @@ const topics = [
     
   }
 
-  /* ===== ANIMATED GRID PATTERNS ===== */
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(10, 58, 58, 0.12) 1px, transparent 1px);
-    background-size: 32px 32px;
-    animation: grid-drift 20s linear infinite;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-
   .contact::before {
     content: '';
     position: absolute;
@@ -1086,36 +1106,6 @@ const topics = [
   }
 
 
-  /* ===== FLOATING PARTICLES ===== */
-  .hero-particles {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .particle {
-    position: absolute;
-    border-radius: 50%;
-    animation: float-up linear infinite;
-  }
-
-  .particle--1 { width: 3px; height: 3px; background: var(--teal-dark); left: 8%; bottom: -10px; animation-duration: 9s; animation-delay: 0s; }
-  .particle--2 { width: 4px; height: 4px; background: var(--teal-mid); left: 22%; bottom: -10px; animation-duration: 13s; animation-delay: 2s; }
-  .particle--3 { width: 2px; height: 2px; background: var(--teal-dark); left: 38%; bottom: -10px; animation-duration: 11s; animation-delay: 4s; }
-  .particle--4 { width: 5px; height: 5px; background: rgba(10, 58, 58, 0.4); left: 52%; bottom: -10px; animation-duration: 15s; animation-delay: 1s; }
-  .particle--5 { width: 3px; height: 3px; background: var(--teal-mid); left: 68%; bottom: -10px; animation-duration: 10s; animation-delay: 3s; }
-  .particle--6 { width: 2px; height: 2px; background: var(--teal-dark); left: 82%; bottom: -10px; animation-duration: 12s; animation-delay: 5.5s; }
-  .particle--7 { width: 4px; height: 4px; background: rgba(21, 107, 107, 0.4); left: 15%; bottom: -10px; animation-duration: 14s; animation-delay: 7s; }
-  .particle--8 { width: 3px; height: 3px; background: var(--teal-dark); left: 75%; bottom: -10px; animation-duration: 8s; animation-delay: 6s; }
-
-  @keyframes float-up {
-    0% { transform: translateY(0) translateX(0); opacity: 0; }
-    5% { opacity: 0.7; }
-    85% { opacity: 0.7; }
-    100% { transform: translateY(calc(-100vh - 20px)) translateX(40px); opacity: 0; }
-  }
 
   /* ===== TOPICS ANIMATED ACCENTS ===== */
   .topics::after {
@@ -1139,18 +1129,9 @@ const topics = [
 
   /* ===== REDUCED MOTION ===== */
   @media (prefers-reduced-motion: reduce) {
-    .orbit, .pulse-dot, .particle, .circuit-glow,
-    .hero::before, .signup-section::before, .contact::before,
+    .contact::before,
     .topics::after {
       animation: none;
-    }
-    .particle { display: none; }
-  }
-
-  /* ===== MOBILE ANIMATION ADJUSTMENTS ===== */
-  @media (max-width: 768px) {
-    .hero-particles .particle:nth-child(n+6) {
-      display: none;
     }
   }
 </style>
