@@ -82,6 +82,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://futureau
             </a>
           </div>
         </div>
+        <div class="footer-acknowledgement">
+          <p class="footer-acknowledgement-text">
+            Future AU is produced on the lands of the Wurundjeri Woi-wurrung people of the Kulin Nation. We pay respect to Elders past, present, and emerging. First Nations Australians have cared for this land for over 65,000 years. Their knowledge, culture, and perspectives are not just part of Australia's history. They are essential to its future. We recognise our responsibility to ensure that the conversations we have on this podcast reflect that truth, and recognise a cohesive future for all Australians.
+          </p>
+        </div>
         <div class="footer-bottom">
           <p class="footer-copyright">
             &copy; {new Date().getFullYear()} Future AU. All rights reserved.
@@ -336,6 +341,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://futureau
 
       .footer-social-link:hover {
         color: #f5c518;
+      }
+
+      .footer-acknowledgement {
+        border-top: 1px solid #156b6b;
+        padding: 24px 0;
+      }
+
+      .footer-acknowledgement-text {
+        font-size: 13px;
+        line-height: 1.7;
+        color: #7ab5b5;
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
       }
 
       .footer-bottom {

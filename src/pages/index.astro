@@ -113,7 +113,7 @@ const topics = [
   </section>
 
   <!-- Signup Section -->
-  <section class="signup-section">
+  <section id="signup" class="signup-section">
     <div class="signup-grid">
 
       <!-- LEFT: Copy -->
@@ -183,7 +183,7 @@ const topics = [
           </div>
           <h2 class="host-name">SIMON<br/>MURPHY</h2>
           <p class="host-bio">
-            Growth strategist, AI-native operator, and chronic overthinker about Australia's potential. Future AU exists to find the people with bold ideas about where this country is heading and put them on the record.
+            Growth strategist, AI-native operator, and chronic overthinker about Australia's potential. I'm endlessly curious about how things actually work, and I've built a habit of asking the non-obvious questions that turn a good conversation into something genuinely useful. Future AU puts that same curiosity to work on the topics that will define Australia's next chapter.
           </p>
           <div class="host-links">
             <a href="https://www.linkedin.com/in/simon-j-murphy/" target="_blank" rel="noopener" class="host-link">LINKEDIN →</a>
@@ -371,7 +371,7 @@ const topics = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 40%;
+    object-position: 15% center;
     opacity: 0.75;
   }
 
@@ -863,28 +863,26 @@ const topics = [
   .host-image-wrapper {
     position: relative;
     flex-shrink: 0;
+    width: 260px;
+    height: 300px;
+    background-color: var(--teal-dark);
+    overflow: hidden;
+    border: 4px solid var(--gold);
   }
 
   .host-image {
-    width: 260px;
-    height: 260px;
-    object-fit: cover;
-    object-position: center bottom;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 105%;
+    height: auto;
     display: block;
-    position: relative;
     z-index: 2;
-    background-color: var(--teal-dark);
   }
 
   .host-image-frame {
-    position: absolute;
-    top: -12px;
-    left: -12px;
-    right: -12px;
-    bottom: -12px;
-    border: 4px solid var(--teal-dark);
-    background-color: var(--teal-dark);
-    z-index: 1;
+    display: none;
   }
 
   .host-content {
@@ -1040,6 +1038,11 @@ const topics = [
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 48px;
+  }
+
+  .form-select option {
+    background-color: #0a3a3a;
+    color: var(--white);
   }
 
   .form-textarea {
